@@ -1,0 +1,30 @@
+.kumbh-sans-font {
+    font-family: "Kumbh Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "YOPQ" 300;
+}
+
+@font-face {
+    font-family: "pixel";
+    src: url("resources/font/UnifontExMono.ttf");
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: "pixel";
+}
+
+
+/* entity */
+.entity {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.entity__pixel {
+    position: absolute;
+}
