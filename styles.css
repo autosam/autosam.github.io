@@ -10,6 +10,11 @@
 @font-face {
     font-family: "pixel";
     src: url("resources/font/UnifontExMono.ttf");
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings:
+        "YOPQ" 300;
 }
 
 body {
@@ -24,15 +29,110 @@ html {
     height: 100%;
 }
 
+a {
+    color: white;
+}
 
-/* entity */
-.entity {
+.links {
+    display: flex;
+    gap: 10px;
+}
+
+.content {
+    height: 100%;
+    margin: 24px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.panel {
+    max-width: 700px;
+    padding: 10px;
+    border: 1px solid rgb(0, 47, 255);
+    background-color: black;
+    margin: auto;
+}
+.panel + .panel {
+    max-width: 700px;
+    padding: 10px;
+    border: 1px solid rgb(0, 47, 255);
+    background-color: black;
+    margin: auto;
+    border-top: 0;
+}
+
+.panel.c0 {
+    border-color: rgb(0, 47, 255);
+    background-color: rgb(0, 47, 255);
+    color: white;
+}
+
+iframe {
+    border: unset;
+}
+
+body:after {
+    background: repeating-linear-gradient(0deg, transparent 0px, rgba(0, 0, 0, 0.5) 3px);
+    background-position: 0 0;
+    width: 100%;
+    height: 100%;
+    content: "";
     position: fixed;
     left: 0;
     top: 0;
-}
-.entity__pixel {
-    position: absolute;
     pointer-events: none;
-    /* border-radius: 100%; */
+    animation: crt-scroll 10s infinite linear;
+}
+/* body:before {
+    background: repeating-linear-gradient(0deg, transparent 0px, rgba(47, 79, 79, 0.1) 100px);
+    background-position: 0 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    animation: crt-scroll 1s infinite linear;
+    mix-blend-mode: overlay;
+} */
+
+@keyframes crt-scroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 -100px;
+    }
+}
+
+.hero-background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.mt-1 {
+    margin-top: 12px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.post h1 {
+    margin: 0;
+    font-size: large;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+#tamaweb .body {
+    background: transparent !important;
 }

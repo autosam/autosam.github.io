@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>game</title>
+</head>
+<body>
+	<link rel="stylesheet" href="style/main.css">
+
+	<!-- <div id="debug-text">DEBUG</div> -->
+
+	<div id="pet-world" class="pet-world">
+		<div class="pet-whole" id="pet-whole">
+			<img class="pet-part" style="z-index: 4;" id="pet-head" src="resources/head_01.png"></img>
+			<img class="pet-part" style="z-index: 5;" id="pet-mouth" src="resources/mouth_01_neutral.png"></img>
+			<img class="pet-part" style="z-index: 5;" id="pet-eyes" src="resources/eyes_01.png"></img>
+			<img class="pet-part" style="z-index: 3;" id="pet-body" src="resources/body_01.png"></img>
+			<img class="pet-part" style="z-index: 2;" id="pet-foot-left" src="resources/foot_01_left.png"></img>
+			<img class="pet-part" style="z-index: 2;" id="pet-foot-right" src="resources/foot_01_right.png"></img>
+			<img class="pet-part" style="z-index: 0; margin-top: 70px;" id="pet-shadow" src="resources/shadow_01.png"></img>
+		</div>
+	</div>
+	
+	<main>
+
+		<div style="display:none" id="sidebar">
+			<div id="stats"> <!-- stats -->
+				<!-- hunger -->
+				<div style="display: flex;gap: 10px;justify-content: center;align-items: center;">Hunger:
+					<span id="stat-hunger" style="width: 100px;height: 10px;background: white;display: flex;border:2px white solid">
+						<span id="stat-hunger-bar" style="width: 0%;height: 100%;background: black;font-size: xx-small;"></span>
+					</span>
+				</div>
+				<!-- fun -->
+				<div style="display: flex;gap: 10px;justify-content: center;align-items: center;">Fun:
+					<span id="stat-fun" style="width: 100px;height: 10px;background: white;display: flex;border:2px white solid">
+						<span id="stat-fun-bar" style="width: 0%;height: 100%;background: black;font-size: xx-small;"></span>
+					</span>
+				</div>
+				<!-- energy -->
+				<div style="display: flex;gap: 10px;justify-content: center;align-items: center;">Energy:
+					<span id="stat-energy" style="width: 100px;height: 10px;background: white;display: flex;border:2px white solid">
+						<span id="stat-energy-bar" style="width: 0%;height: 100%;background: black;font-size: xx-small;"></span>
+					</span>
+				</div>
+				<!-- social -->
+				<div style="display: flex;gap: 10px;justify-content: center;align-items: center;">Social:
+					<span id="stat-social" style="width: 100px;height: 10px;background: white;display: flex;border:2px white solid">
+						<span id="stat-social-bar" style="width: 0%;height: 100%;background: black;font-size: xx-small;"></span>
+					</span>
+				</div>
+
+			</div>
+		</div>
+	</main>
+	<script src="js/utils.js"></script>
+	<script src="js/pet_definition.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/pet.js"></script>
+
+</body>
