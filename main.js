@@ -10,7 +10,10 @@ class Entity {
 
         this.imageData = this.prepareImageData(imageData);
 
-        this.pixels = this.generatePixels();
+        this.pixels = this.generatePixels(this.imageData.length, this.imageData[0].length);
+
+        this.x = ((document.body.clientWidth / this.pixelSize) - this.imageData[0].length) / 2;
+        this.y = ((document.body.clientHeight / this.pixelSize) - this.imageData.length) / 2;
 
 
         this.pixelInterval = setInterval(() => {
@@ -18,9 +21,42 @@ class Entity {
         }, 16)
 
         this.bodyInterval = setInterval(() => {
-            this.x = document.body.clientWidth / 2;
-            this.y = document.body.clientHeight / 2;
-        }, 500);
+            if(random(0, 2) != 0) return;
+            // this.x = random(0, 150);
+            // this.y = random(0, 75);
+        }, 1000);
+        
+        this.lastMousePosition = {x: 0, y: 0};
+
+        document.addEventListener('mousemove', (event) => {
+            if (event.pageX == null && event.clientX != null) {
+                eventDoc = (event.target && event.target.ownerDocument) || document;
+                doc = eventDoc.documentElement;
+                body = eventDoc.body;
+    
+                event.pageX = event.clientX +
+                  (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                  (doc && doc.clientLeft || body && body.clientLeft || 0);
+                event.pageY = event.clientY +
+                  (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+                  (doc && doc.clientTop  || body && body.clientTop  || 0 );
+            }
+    
+
+            let x = (event.pageX / this.pixelSize) - this.imageData[0].length/2;
+            let y = (event.pageY / this.pixelSize) - this.imageData.length/2;
+
+            const offsetX = this.lastMousePosition.x - x;
+            const offsetY = this.lastMousePosition.y - y;
+
+            this.lastMousePosition.x = x;
+            this.lastMousePosition.y = y;
+
+            this.pixels.forEach(p => {
+                p.parentOffsetX -= offsetX * Math.random() * -0.5
+                p.parentOffsetY -= offsetY * Math.random() * -0.5
+            });
+        })
     }
 
     prepareImageData(data){
@@ -33,22 +69,22 @@ class Entity {
         console.log(res);
         return res;
     }
-
-    getPixelState(x, y){
-        if(!this.imageData[x]) return false;
-        return this.imageData[x][y] === '1';
-    }
-
-    generatePixels(){
+    
+    generatePixels(width, height){
         const pixels = [];
-        for(let x = 0; x < 11; x++)
-            for(let y = 0; y < 42; y++){
+        for(let x = 0; x < height; x++)
+            for(let y = 0; y < width; y++){
                 const p = new Pixel(x, y, this);
                 pixels.push(p);
                 this.node.appendChild(p.node);
             }
 
         return pixels;  
+    }
+
+    getPixelState(x, y){
+        if(!this.imageData[x]) return false;
+        return this.imageData[x][y] === '1';
     }
 
     // updatePixel(pixel){
@@ -69,20 +105,21 @@ class Pixel {
         this.localX = x;
         this.localY = y;
         this.pixelSize = this.parent.pixelSize;
+        this.x = x;
+        this.y = y;
+
+        this.parentOffsetX = 0;
+        this.parentOffsetY = 0;
 
         this.animationFloat = 0;
         this.animationFloatAddSpeed = Math.random() * 0.1;
-        this.animationFloatStrength = Math.random() * 0.5;
+        this.animationFloatStrength = Math.random();
 
         this.node = this.#createPixel(x, y);
     }
     setPosition(x, y){
-
-        const targetX = x + this.parent.x;
-        const targetY = y + this.parent.y;
-
-        this.node.style.left = `${targetX}px`;
-        this.node.style.top = `${targetY}px`;
+        this.node.style.left = `${x}px`;
+        this.node.style.top = `${y}px`;
     }
     update(){
         const state = this.parent.getPixelState(this.localY, this.localX);
@@ -90,10 +127,18 @@ class Pixel {
         this.animationFloat = (this.animationFloat + this.animationFloatAddSpeed);
         if(this.animationFloat > Math.PI * 2) this.animationFloat = 0;
 
+        this.parentOffsetX = lerp(this.parentOffsetX, this.parent.x, this.animationFloatAddSpeed * 2);
+        this.parentOffsetY = lerp(this.parentOffsetY, this.parent.y, this.animationFloatAddSpeed * 2);
+
+        const targetX = this.x + this.parentOffsetX,
+        targetY = this.y + this.parentOffsetY;
+
         this.setPosition(
-            Math.sin(this.animationFloat) * this.animationFloatStrength * this.pixelSize + this.localX * this.pixelSize,
-            Math.cos(this.animationFloat) * this.animationFloatStrength * this.pixelSize + this.localY * this.pixelSize
+            Math.sin(this.animationFloat) * this.animationFloatStrength * this.pixelSize + targetX * this.pixelSize,
+            Math.cos(this.animationFloat) * this.animationFloatStrength * this.pixelSize + targetY * this.pixelSize
         )
+
+        this.node.style.opacity = `${Math.max(Math.sin(this.animationFloat), random(2, 5) * 0.1)}`
 
         // this.node.style.background = state && (Math.random() > 0.1) ? 'white' : 'transparent';
     }
@@ -155,6 +200,36 @@ const imageData = `0000100000
 0000010000
 0000010000`;
 
-const e = new Entity(imageData);
+const imageDataSimple = `11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+11111111111111111111111111111111
+`
+
+const e = new Entity(imageDataSimple);
 console.log(e)
 document.body.appendChild(e.node);
