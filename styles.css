@@ -57,6 +57,7 @@ a:hover {
     border: 1px solid rgb(0, 47, 255);
     background-color: black;
     margin: auto;
+    position: relative;
 }
 
 .panel+.panel {
@@ -76,6 +77,19 @@ a:hover {
 
 .panel.side {
     width: 200px;
+}
+
+.panel.c0::before {
+    content: "";
+    width: 100%;
+    height: 16px;
+    background: url("resources/img/gifs/divider1.gif");
+    position: absolute;
+    top: -6px;
+    left: 0;
+    z-index: -1;
+    image-rendering: pixelated;
+    background-position-x: center;
 }
 
 iframe {
@@ -208,6 +222,10 @@ body:after {
     justify-content: center;
 }
 
+.middle {
+    align-items: center;
+}
+
 .btn88 {
     background: gray;
     box-shadow: -2px -2px 0px black inset, 2px 2px 0px white inset;
@@ -222,4 +240,10 @@ body:after {
 }
 .btn88.dark {
     background: #515151;
+}
+
+.top-left-out {
+    position: absolute;
+    left: -50%;
+    top: -50%;
 }
