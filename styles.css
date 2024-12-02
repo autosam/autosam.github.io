@@ -247,3 +247,15 @@ body:after {
     left: -50%;
     top: -50%;
 }
+
+textarea {
+    border-radius: 0;
+    border: 1px solid;
+    background-color: black;
+    color: white;
+    padding: 4px;
+}
+
+body {
+    cursor: url('resources/img/gifs/bluecursor.gif'), auto;
+}
