@@ -19,11 +19,40 @@
 
 body {
     background: black;
+    background: url("resources/img/gifs/bg-info.gif");
+    /* background: url("resources/img/gifs/staticbackground2.gif"); */
     color: white;
     font-family: "pixel";
     height: 100%;
     padding: 0;
     margin: 0;
+}
+body::before {
+    background: url("resources/img/gifs/rain_dark_mono.gif");
+    mix-blend-mode: lighten;
+    background-position: 0 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    opacity: .025;
+}
+
+body::after {
+    background: repeating-linear-gradient(0deg, transparent 0px, rgba(0, 0, 0, 0.5) 3px);
+    background-position: 0 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    animation: crt-scroll 10s infinite linear;
 }
 
 html {
@@ -34,9 +63,27 @@ a {
     color: white;
     text-decoration: none;
 }
-
 a:hover {
     text-decoration: underline;
+}
+a::disabled {
+    opacity: 0.5;
+}
+
+button.a {
+    all: unset;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+button.a:hover {
+    text-decoration: underline;
+}
+button.a:disabled {
+    opacity: 0.65;
+    cursor: auto;
+    pointer-events: none;
+    text-decoration: line-through;
 }
 
 .links {
@@ -54,7 +101,7 @@ a:hover {
 .panel {
     max-width: 700px;
     padding: 10px;
-    border: 1px solid rgb(0, 47, 255);
+    border: 1px solid #002fff;
     background-color: black;
     margin: auto;
     position: relative;
@@ -88,9 +135,9 @@ a:hover {
 }
 
 .panel.c1 {
-    border-color: rgb(255, 37, 37);
-    background-color: rgb(255, 37, 37);
-    color: white;
+    border-color: white;
+    background-color: white;
+    color: rgb(0, 47, 255);
 }
 .panel.c1::before {
     content: "";
@@ -98,12 +145,12 @@ a:hover {
     height: 20px;
     background: url("resources/img/gifs/dividerzz.gif");
     position: absolute;
-    top: -4px;
+    bottom: -4px;
     left: 0;
     z-index: -1;
     image-rendering: pixelated;
     background-position-x: center;
-    filter: hue-rotate(120deg);
+    filter: grayscale() brightness(10);
 }
 
 .panel.side {
@@ -112,19 +159,6 @@ a:hover {
 
 iframe {
     border: unset;
-}
-
-body:after {
-    background: repeating-linear-gradient(0deg, transparent 0px, rgba(0, 0, 0, 0.5) 3px);
-    background-position: 0 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: fixed;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-    animation: crt-scroll 10s infinite linear;
 }
 
 /* body:before {
@@ -157,6 +191,19 @@ body:after {
     top: 0;
     left: 0;
     width: 100%;
+}
+.hero-background::after {
+    background: url("resources/img/gifs/background10.gif");
+    /* mix-blend-mode: lighten; */
+    z-index: 3;
+    width: 100px;
+    height: 100px;
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    opacity: 1;
 }
 
 .mt-1 {
@@ -249,6 +296,10 @@ h1 {
     align-items: center;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .btn88 {
     background: gray;
     box-shadow: -2px -2px 0px black inset, 2px 2px 0px white inset;
@@ -281,4 +332,60 @@ textarea {
 
 body {
     cursor: url('resources/img/gifs/bluecursor.gif'), auto;
+}
+
+.footer {
+    margin-top: 60px;
+}
+
+.bottom-img {
+    position: fixed;
+    bottom: 0;
+    width: 25%;
+    image-rendering: pixelated;
+    left: 0%;
+    z-index: 2;
+    mix-blend-mode: lighten;
+
+}
+
+.generic-anim-1 {
+    animation: bottom-img-anim 1s infinite alternate;
+    animation-timing-function: steps(3);
+}
+
+@keyframes bottom-img-anim {
+    0% {
+        transform: rotateZ(-10deg) translateY(20px);
+    }
+    50% {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(10deg) translateY(20px);
+    }
+}
+
+.navigation label {
+    font-size: small;
+    color: rgb(173, 174, 230);
+}
+
+.navigation-inner {
+    margin-left: 10px;
+}
+
+/* spectral vile */
+.spectral-vile-char {
+    animation: tweaking infinite linear;
+    animation-duration: var(--a-d);
+    display: inline-block;
+}
+@keyframes tweaking {
+    from {
+        transform: translateY(-1px);
+    }
+    to {
+        transform: translateY(1px);
+    }
 }
