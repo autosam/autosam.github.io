@@ -1,16 +1,38 @@
-type ProjectCardProps = {
+import Link from "next/link";
+import { Scramble } from "../Scramble";
+import { useState } from "react";
+
+export type ProjectCardProps = {
   title: string;
   img: string;
   href?: string;
+  type?: string;
+  key?: string;
+  releaseDate?: number;
 };
 export const ProjectCard = (props: ProjectCardProps) => {
-  const { title, img, href } = props;
+  const [isHovering, serIsHovering] = useState(false);
+
+  const { title, img, href, key, releaseDate } = props;
+
   return (
-    <div className="p-2 gap-2 border border-black flex flex-col w-fit h-fit">
-      <div className="text-sm">{title}</div>
-      <div>
-        <img className="max-w-sm" src={img} />
+    <Link key={key} href={href ?? "#"} target="_blank">
+      <div
+        className="flex flex-col w-fit h-fit hover:underline"
+        onMouseLeave={() => serIsHovering(false)}
+        onMouseEnter={() => serIsHovering(true)}
+      >
+        <div className="text-sm flex justify-between">
+          <Scramble
+            delay={2000 + Math.random() * 5000}
+            text={title.toUpperCase()}
+          />
+          {isHovering && <small className="opacity-50">{releaseDate}</small>}
+        </div>
+        <div>
+          <img className="w-64 aspect-square object-cover" src={img} />
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };

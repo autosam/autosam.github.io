@@ -1,30 +1,31 @@
+"use client";
+
 import { scrambleLetters } from "@/utils";
 import { useEffect, useState } from "react";
 
-const PREFIX = "////// ";
-
-type TitleProps = {
+type ScrambleProps = {
   text: string;
   class?: string;
+  delay?: number;
+  speed?: number;
 };
-export const Title = (props: TitleProps) => {
-  const { text } = props;
-  const fullText = PREFIX + text;
-  const [currentText, setCurrentText] = useState(fullText);
+export const Scramble = (props: ScrambleProps) => {
+  const { text, delay, speed } = props;
+  const [currentText, setCurrentText] = useState(text);
   const [scrambleIntensity, setScrambleIntensity] = useState(1);
 
   useEffect(() => {
-    setCurrentText(scrambleLetters(fullText, scrambleIntensity));
+    setCurrentText(scrambleLetters(text, scrambleIntensity));
   }, [scrambleIntensity]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setScrambleIntensity(1);
-    }, 2000);
+    }, delay ?? 1500 + Math.random() * 2000);
 
     const scrambleInterval = setInterval(() => {
       setScrambleIntensity((prev) => {
-        if (prev > 0) return prev - 0.1;
+        if (prev > 0) return prev - (speed ?? 0.1);
         else return 0;
       });
     }, 50);

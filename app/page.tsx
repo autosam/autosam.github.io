@@ -1,19 +1,12 @@
 "use client";
 
 import { ProjectsContainer } from "@/components/ProjectsContainer";
-import { Title } from "@/components/Title";
 
 export default function Page() {
   return (
-    <>
+    <div className="text-xs">
+      {/* <div className="mt-96" /> */}
       <ProjectsContainer />
-      <Title text="ABOUT" />
-      <div className="text-xs">
-        <p>PROGRAMMER /// WEB DEVELOPER ///</p>
-        <p>GAME DEVELOPER /// MUSIC PRODUCER</p>
-        <br />
-        <p>24 YEARS OLD /// PERSIAN</p>
-      </div>
-    </>
+    </div>
   );
 }
