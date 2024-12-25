@@ -3,6 +3,12 @@ import { PROJECTS } from "@/constants/projects";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export function generateStaticParams() {
+  return PROJECTS.map((p) => ({
+    id: p.id,
+  }));
+}
+
 export default async function Page({
   params,
 }: {
