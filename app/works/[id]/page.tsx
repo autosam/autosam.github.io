@@ -16,7 +16,7 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
         <img className="w-80" src={projectDefinition.img} />
         <br />
         <div className="flex flex-col justify-between">
