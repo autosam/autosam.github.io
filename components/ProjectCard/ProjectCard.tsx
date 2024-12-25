@@ -13,10 +13,10 @@ export type ProjectCardProps = {
 export const ProjectCard = (props: ProjectCardProps) => {
   const [isHovering, serIsHovering] = useState(false);
 
-  const { title, img, href, key, releaseDate } = props;
+  const { title, img, href, releaseDate } = props;
 
   return (
-    <Link key={key} href={href ?? "#"} target="_blank">
+    <Link href={href ?? "#"} target="_blank">
       <div
         className="flex flex-col w-fit h-fit hover:underline"
         onMouseLeave={() => serIsHovering(false)}

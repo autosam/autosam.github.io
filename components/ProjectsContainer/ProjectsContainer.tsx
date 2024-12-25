@@ -4,15 +4,26 @@ import { useEffect, useState } from "react";
 import { uid } from "uid";
 import classNames from "classnames";
 import { ProjectRow } from "../ProjectRow";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 enum DisplayStyle {
   grid,
   row,
 }
 
+const TYPE_QUERY_PARAM_KEY = "type";
+
 export const ProjectsContainer = () => {
+  const searchParams = useSearchParams();
   const [activeType, setActiveType] = useState(PROJECT_TYPES.ALL);
   const [displayStyle, setDisplayStyle] = useState(DisplayStyle.row);
+
+  useEffect(() => {
+    const queryType =
+      searchParams.get(TYPE_QUERY_PARAM_KEY)?.toUpperCase() ?? "";
+    setActiveType(PROJECT_TYPES[queryType] ?? PROJECT_TYPES.ALL);
+  }, [searchParams]);
 
   const types = [PROJECT_TYPES.ALL];
   PROJECTS.forEach((p) => {
@@ -27,7 +38,7 @@ export const ProjectsContainer = () => {
   return (
     <>
       <div className="flex justify-between mb-4 border-b border-black">
-        <div className="flex gap-4">
+        <div className="flex gap-4 w-2/3">
           {/* {types.map((t) => { */}
           {Object.keys(PROJECT_TYPES).map((t) => {
             const isActive = activeType === t;
@@ -36,9 +47,11 @@ export const ProjectsContainer = () => {
               "bg-black text-white": isActive,
             });
             return (
-              <button
+              <Link
+                key={uid()}
                 className={className}
-                onClick={() => setActiveType(PROJECT_TYPES[t])}
+                // onClick={() => setActiveType(PROJECT_TYPES[t])}
+                href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
               >
                 {isActive && ">"}
                 {t}
@@ -48,7 +61,7 @@ export const ProjectsContainer = () => {
                     (e) => e.type === t || activeType === PROJECT_TYPES.ALL
                   ).length
                 })`} */}
-              </button>
+              </Link>
             );
           })}
         </div>

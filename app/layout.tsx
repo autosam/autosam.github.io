@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={font.className}>
         <div className="flex flex-col min-h-screen">
           <Header />
-          <div className="p-4 mt-12">{children}</div>
+          <div className="p-4">{children}</div>
           <Footer />
         </div>
       </body>

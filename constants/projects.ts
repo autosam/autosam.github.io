@@ -75,7 +75,7 @@ export const PROJECTS: any[] = [
     isOngoing: false,
   },
   {
-    title: "Dim Playable Demo",
+    title: "Dim - Playable Demo",
     img: "https://img.itch.zone/aW1nLzE3OTUyMzQucG5n/315x250%23c/TCB0ix.png",
     href: "https://smnmhmdy.itch.io/dim-demo",
     type: PROJECT_TYPES.GAME,
