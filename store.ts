@@ -1,6 +1,5 @@
-import { atom, useAtom } from "jotai";
+/* import { atom, useAtom } from "jotai";
 import { Gender, Genders } from "./types/Gender";
-import { CLIENT_GENDER_KEY } from "./components/ClientSetup/ClientSetup.consts";
 import { TalkData } from "./types/TalkData";
 
 export const userIdAtom = atom<string>("");
@@ -24,4 +23,4 @@ export const userGenderWithEffectAtom = atom(
   }
 );
 
-export const postsAtom = atom<TalkData[]>();
+export const postsAtom = atom<TalkData[]>(); */
