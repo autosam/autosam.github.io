@@ -3,6 +3,7 @@ import { Tomorrow } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 
@@ -21,6 +22,14 @@ export default function RootLayout({
       <body className={font.className}>
         <div className="flex flex-col min-h-screen">
           <Header />
+
+          <Breadcrumb
+            homeElement={<div>INDEX</div>}
+            separator={<div>{">"}</div>}
+            containerClasses="flex gap-2 text-xs uppercase p-4 py-1"
+            activeClasses="font-bold"
+            listClasses="hover:underline"
+          />
           <div className="p-4">{children}</div>
           <Footer />
         </div>

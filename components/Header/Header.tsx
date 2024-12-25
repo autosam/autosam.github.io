@@ -9,7 +9,7 @@ export const Header = () => {
       {/* <div><Link href="/">HOME</Link></div> */}
       {/* <div className="font-bold flex items-center gap-4"> */}
       <Link href="/" className="flex items-center gap-3">
-        <img className="h-10" src="logo2.png" />
+        <img className="h-10" src="/logo2.png" />
         <div className="font-bold flex flex-col">
           <div className="h-3">
             <Scramble delay={1000 + Math.random() * 8000} text="SMN MHMDY" />

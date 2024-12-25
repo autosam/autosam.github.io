@@ -3,7 +3,6 @@ import { ProjectCardProps } from "../ProjectCard";
 import { Scramble } from "../Scramble";
 import { useState } from "react";
 import classNames from "classnames";
-import { uid } from "uid";
 
 export type ProjectRowProps = ProjectCardProps & {
   releaseDate?: number;
@@ -31,9 +30,13 @@ export const ProjectRow = (props: ProjectRowProps) => {
     "text-center": isExpanded,
   });
 
-  const { title, img, href, type, releaseDate, isOngoing } = props;
+  const { title, img, href, type, releaseDate, isOngoing, id } = props;
+
+  const hrefTarget = id ? `works/${id}` : href;
+  const target = id ? "" : "_blank";
+
   return (
-    <Link className="hover:underline" href={href ?? "#"} target="_blank">
+    <Link className="hover:underline" href={hrefTarget ?? "#"} target={target}>
       <div
         className={rowClass}
         onMouseEnter={() => setIsExpanded(true)}
