@@ -33,7 +33,7 @@ export const Footer = () => {
       <Scramble text="Power to freedom." />
       <br />
       <div>
-        <p>Contacts:</p>
+        <p>Contact:</p>
         <FooterLink href="mailto:autosam.sm@gmail.com">
           autosam.sm@gmail.com
         </FooterLink>
