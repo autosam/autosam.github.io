@@ -38,7 +38,7 @@ export const ProjectsContainer = () => {
   return (
     <>
       <div className="flex justify-between mb-4 border-b border-black">
-        <div className="flex gap-4 w-2/3">
+        <div className="flex gap-4 w-2/3 overflow-auto">
           {/* {types.map((t) => { */}
           {Object.keys(PROJECT_TYPES).map((t) => {
             const isActive = activeType === t;
