@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           />
           <div className="p-4">{children}</div>
           <Footer />
+          <GoogleAnalytics gaId="G-1THW58E0S2" />
         </div>
       </body>
     </html>
