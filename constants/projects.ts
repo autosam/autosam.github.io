@@ -6,7 +6,7 @@ export const PROJECTS: ProjectProps[] = [
   smFirstpersonController,
   {
     title: "Tamaweb",
-    img: "https://img.itch.zone/aW1nLzE3Nzk3NDg4LnBuZw==/315x250%23c/ZJr4Ym.png",
+    img: "/projects/tamaweb.png",
     href: "https://tamawebgame.github.io",
     type: PROJECT_TYPES.WEBSITE,
     releaseDate: 2023,
@@ -29,7 +29,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "Spectral Vile Mimic",
-    img: "https://img.itch.zone/aW1nLzE4MTg2MjkzLnBuZw==/315x250%23c/1RvZmD.png",
+    img: "/projects/spectralvilemimic.png",
     href: "https://smnmhmdy.itch.io/spectral-vile-mimic",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2024,
@@ -39,7 +39,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "Duzakh (Beta)",
-    img: "https://img.itch.zone/aW1nLzk3MjY1NjQuanBn/315x250%23c/PLFsJA.jpg",
+    img: "/projects/duzakh.png",
     href: "https://samgamesio.itch.io/duzakh-beta",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2022,
@@ -52,7 +52,7 @@ export const PROJECTS: ProjectProps[] = [
 
   {
     title: "CopperCraft",
-    img: "https://img.itch.zone/aW1nLzgzMjgwMjAucG5n/315x250%23c/kc%2FOFs.png",
+    img: "/projects/coppercraft.png",
     href: "https://samgamesio.itch.io/coppercraft",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2021,
@@ -63,7 +63,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "Flyborn",
-    img: "https://play-lh.googleusercontent.com/3lznNl7AYxVThGylVfLsAzFPhlU_f3XKXQn3xBys-CTRJ_trSR5l_f1u-SKMJzPhjNU=w240-h480-rw",
+    img: "/projects/flyborn.webp",
     href: "https://play.google.com/store/apps/details?id=com.vcreations.flyborn&hl=en",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2021,
@@ -73,7 +73,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "EverRage",
-    img: "https://img.itch.zone/aW1nLzY0NzI4MjQucG5n/315x250%23c/YPDvFY.png",
+    img: "/projects/everrage.png",
     href: "https://samgamesio.itch.io/everrage",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2021,
@@ -86,7 +86,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "MasterTest",
-    img: "https://img.itch.zone/aW1nLzUwNTQwNjUucG5n/315x250%23c/ln%2Byrw.png",
+    img: "/projects/mastertest.png",
     href: "https://samgamesio.itch.io/mastertest",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2021,
@@ -96,7 +96,7 @@ export const PROJECTS: ProjectProps[] = [
   },
   {
     title: "Dim - Playable Demo",
-    img: "https://img.itch.zone/aW1nLzE3OTUyMzQucG5n/315x250%23c/TCB0ix.png",
+    img: "/projects/dim_pd.png",
     href: "https://smnmhmdy.itch.io/dim-demo",
     type: PROJECT_TYPES.GAME,
     releaseDate: 2019,

@@ -1,5 +1,6 @@
 import { Scramble } from "@/components/Scramble";
 import { PROJECTS } from "@/constants/projects";
+import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
@@ -12,6 +13,25 @@ export function generateStaticParams() {
 }
 
 const DEFAULT_LINK_TEXT = "VISIT";
+
+export async function generateMetadata(
+  { params },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = (await params).id;
+  const projectDefinition = PROJECTS.find((p) => id === p.id);
+  if (!projectDefinition) return {};
+  const previousImages = (await parent).openGraph?.images || [];
+  return {
+    title: projectDefinition?.title,
+    openGraph: {
+      images: projectDefinition?.img
+        ? [projectDefinition?.img, ...previousImages]
+        : previousImages,
+    },
+  };
+}
 
 export default async function Page({
   params,

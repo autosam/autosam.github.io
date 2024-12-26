@@ -1,3 +1,5 @@
+"use client";
+
 import { PROJECTS } from "@/constants/projects";
 import { ProjectCard, ProjectCardProps } from "../ProjectCard";
 import { useEffect, useState } from "react";
