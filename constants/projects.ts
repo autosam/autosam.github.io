@@ -70,6 +70,16 @@ export const PROJECTS: ProjectProps[] = [
     isOngoing: false,
     id: 'flyborn',
     description: `FLYBORN is a score-based based endless free-falling game. Dodge some obstacles, smash into others, use your abilities, and free the world from the terror of the dark gods, the ones who have been ravaging and turning everything and everyone into dark monsters, yourself included.`,
+    links: [
+      {
+          text: 'Google Play',
+          url: 'https://play.google.com/store/apps/details?id=com.vcreations.flyborn&hl=en'
+      },
+      {
+          text: 'APKPure',
+          url: 'https://apkpure.net/flyborn/com.smnmhmdy.flyborn'
+      },
+  ]
   },
   {
     title: "EverRage",

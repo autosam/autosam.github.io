@@ -20,9 +20,9 @@ export const ProjectCard = (props: ProjectCardProps) => {
   const target = id ? "" : "_blank";
 
   return (
-    <Link href={hrefTarget ?? "#"} target={target}>
+    <Link className="flex-grow w-1/5" href={hrefTarget ?? "#"} target={target}>
       <div
-        className="flex flex-col w-fit h-fit hover:underline"
+        className="flex flex-col w-full h-fit hover:underline"
         onMouseLeave={() => serIsHovering(false)}
         onMouseEnter={() => serIsHovering(true)}
       >
@@ -34,7 +34,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
           {isHovering && <small className="opacity-50">{releaseDate}</small>}
         </div>
         <div>
-          <img className="w-64 aspect-square object-cover" src={img} />
+          <img className="w-full aspect-video object-cover" src={img} />
         </div>
       </div>
     </Link>

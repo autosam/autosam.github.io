@@ -11,6 +11,7 @@ const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Smn Mhmdy",
   description: "Smn Mhmdy's Personal Website",
+  metadataBase: new URL("https://autosam.github.io"),
 };
 
 export default function RootLayout({

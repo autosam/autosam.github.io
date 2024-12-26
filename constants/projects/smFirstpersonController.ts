@@ -43,7 +43,6 @@ Parameters:
 export default {
     title: 'SM Firstperson Controller',
     img: "/projects/smFirstpersonController.png",
-    href: "https://samgamesio.itch.io/mastertest",
     type: PROJECT_TYPES.BEHAVIOR,
     releaseDate: 2024,
     isOngoing: true,
@@ -58,6 +57,5 @@ export default {
             text: 'Download Demo',
             url: '/downloads/smFirstpersonController - Demo1.zip'
         },
-
     ]
 }
