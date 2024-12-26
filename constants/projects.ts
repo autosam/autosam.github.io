@@ -1,14 +1,9 @@
-import { ProjectCardProps } from "@/components/ProjectCard";
+import { ProjectProps } from "./project.types";
+import { PROJECT_TYPES } from "./projectTypes";
+import smFirstpersonController from "./projects/smFirstpersonController";
 
-export const PROJECT_TYPES = {
-  ALL: "ALL",
-  WEBSITE: "WEBSITE",
-  GAME: "GAME",
-  BEHAVIOR: "BEHAVIOR",
-  OTHER: "OTHER",
-};
-
-export const PROJECTS: any[] = [
+export const PROJECTS: ProjectProps[] = [
+  smFirstpersonController,
   {
     title: "Tamaweb",
     img: "https://img.itch.zone/aW1nLzE3Nzk3NDg4LnBuZw==/315x250%23c/ZJr4Ym.png",
@@ -30,7 +25,7 @@ export const PROJECTS: any[] = [
     releaseDate: 2024,
     isOngoing: true,
     id: 'the-wall-project',
-    description: `A platform built on anonymity and freedom of speech.\nLet the collective conscience decide the validity of an statement.`,
+    description: `A platform built on anonymity and freedom of speech. Let the collective conscience decide the validity of an statement.`,
   },
   {
     title: "Spectral Vile Mimic",

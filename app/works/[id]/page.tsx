@@ -2,12 +2,16 @@ import { Scramble } from "@/components/Scramble";
 import { PROJECTS } from "@/constants/projects";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Markdown from "react-markdown";
+import { uid } from "uid";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({
     id: p.id,
   }));
 }
+
+const DEFAULT_LINK_TEXT = "VISIT";
 
 export default async function Page({
   params,
@@ -20,29 +24,40 @@ export default async function Page({
 
   if (!projectDefinition) notFound();
 
+  const links = projectDefinition.links || [
+    {
+      text: DEFAULT_LINK_TEXT,
+      url: projectDefinition.href,
+    },
+  ];
+
   return (
     <>
-      <div className="flex gap-2 flex-wrap">
-        <img className="w-80" src={projectDefinition.img} />
+      <div className="flex gap-2 flex-wrap gap-y-8">
+        <div className="gap-2 flex flex-col">
+          <img className="w-80 h-fit" src={projectDefinition.img} />
+          {links.map((link) => (
+            <div key={uid()} className="inline-flex">
+              <Link
+                className="bg-black text-white px-2 hover:underline"
+                href={link.url}
+                target="_blank"
+              >
+                {(link?.text ?? DEFAULT_LINK_TEXT).toUpperCase()} \{">"}
+              </Link>
+            </div>
+          ))}
+        </div>
         <br />
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between gap-1 mb-4">
           <div className="text-sm">
             <strong>
               <Scramble text={projectDefinition.title?.toUpperCase()} />
             </strong>
-            <div className="max-w-3xl text-justify">
-              {projectDefinition.description}
+            <br />
+            <div className="max-w-3xl text-justify prose prose-sm">
+              <Markdown>{projectDefinition.description}</Markdown>
             </div>
-          </div>
-
-          <div>
-            <Link
-              className="bg-black text-white px-2 hover:underline"
-              href={projectDefinition.href}
-              target="_blank"
-            >
-              VISIT \{">"}
-            </Link>
           </div>
         </div>
       </div>

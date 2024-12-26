@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 type ScrambleProps = {
   text: string;
-  class?: string;
+  className?: string;
   delay?: number;
   speed?: number;
 };
 export const Scramble = (props: ScrambleProps) => {
-  const { text, delay, speed } = props;
+  const { text, delay, speed, className } = props;
   const [currentText, setCurrentText] = useState(text);
   const [scrambleIntensity, setScrambleIntensity] = useState(1);
 
@@ -36,5 +36,5 @@ export const Scramble = (props: ScrambleProps) => {
     };
   }, []);
 
-  return <div>{currentText} </div>;
+  return <div className={className}>{currentText} </div>;
 };
