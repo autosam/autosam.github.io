@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { ProjectCardProps } from "../ProjectCard";
 import { Scramble } from "../Scramble";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { ProjectProps } from "@/constants/project.types";
 
-export type ProjectRowProps = ProjectCardProps & ProjectProps;
-export const ProjectRow = (props: ProjectRowProps) => {
+export const ProjectRow = (props: ProjectProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const rowClass = classNames(

@@ -1,7 +1,7 @@
 "use client";
 
 import { PROJECTS } from "@/constants/projects";
-import { ProjectCard, ProjectCardProps } from "../ProjectCard";
+import { ProjectCard } from "../ProjectCard";
 import { useEffect, useState } from "react";
 import { uid } from "uid";
 import classNames from "classnames";
@@ -9,6 +9,7 @@ import { ProjectRow } from "../ProjectRow";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { PROJECT_TYPES } from "@/constants/projectTypes";
+import { ProjectProps } from "@/constants/project.types";
 
 enum DisplayStyle {
   grid,
@@ -92,9 +93,9 @@ export const ProjectsContainer = () => {
           (p) => activeType === PROJECT_TYPES.ALL || p.type === activeType
         ).map((p) =>
           displayStyle === DisplayStyle.grid ? (
-            <ProjectCard key={uid()} {...(p as ProjectCardProps)} />
+            <ProjectCard key={uid()} {...p} />
           ) : (
-            <ProjectRow key={uid()} {...(p as ProjectCardProps)} />
+            <ProjectRow key={uid()} {...p} />
           )
         )}
       </div>
