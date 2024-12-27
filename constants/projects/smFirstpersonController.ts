@@ -1,3 +1,4 @@
+import { PROJECT_STATUSES } from "../projectStatuses";
 import { PROJECT_TYPES } from "../projectTypes";
 
 const description = `
@@ -45,7 +46,7 @@ export default {
     img: "/projects/smFirstpersonController.png",
     type: PROJECT_TYPES.BEHAVIOR,
     releaseDate: 2024,
-    isOngoing: true,
+    status: PROJECT_STATUSES.ONGOING,
     id: 'sm-firstperson-controller',
     description: description,
     links: [

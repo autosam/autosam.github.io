@@ -12,7 +12,7 @@ export default function NotFound() {
       <h1 className="text-6xl font-bold">404!</h1>
       <p>I don't think this is a valid url.</p>
       <br />
-      <Link className="text-sm bg-black text-white" href="/">
+      <Link className="text-sm bg-black text-white hover:underline" href="/">
         {"</"} GO BACK
       </Link>
     </div>

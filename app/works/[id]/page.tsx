@@ -51,6 +51,12 @@ export default async function Page({
     },
   ];
 
+  const displayedInfo = [
+    projectDefinition.releaseDate,
+    projectDefinition.type,
+    projectDefinition.status,
+  ];
+
   return (
     <>
       <div className="flex gap-2 flex-wrap gap-y-8">
@@ -71,9 +77,19 @@ export default async function Page({
         <br />
         <div className="flex flex-col justify-between gap-1 mb-4">
           <div className="text-sm">
-            <strong>
-              <Scramble text={projectDefinition.title?.toUpperCase()} />
-            </strong>
+            <div>
+              <strong>
+                <Scramble text={projectDefinition.title?.toUpperCase()} />
+              </strong>
+              <small className="flex gap-2 opacity-75">
+                {displayedInfo.map((entry, i) => (
+                  <>
+                    <span>{entry?.toString().toUpperCase()}</span>
+                    {i !== displayedInfo.length - 1 && <span>///</span>}
+                  </>
+                ))}
+              </small>
+            </div>
             <br />
             <div className="max-w-3xl text-justify prose prose-sm">
               <Markdown>{projectDefinition.description}</Markdown>

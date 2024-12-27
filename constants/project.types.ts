@@ -4,8 +4,8 @@ export type ProjectProps = {
     href?: string,
     type?: string,
     releaseDate?: number,
-    isOngoing?: boolean,
     id?: any,
     description?: string,
     links?: any[]
+    status: string,
 }

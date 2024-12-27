@@ -3,12 +3,9 @@ import { ProjectCardProps } from "../ProjectCard";
 import { Scramble } from "../Scramble";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
+import { ProjectProps } from "@/constants/project.types";
 
-export type ProjectRowProps = ProjectCardProps & {
-  releaseDate?: number;
-  isOngoing?: boolean;
-  links?: any[];
-};
+export type ProjectRowProps = ProjectCardProps & ProjectProps;
 export const ProjectRow = (props: ProjectRowProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -37,7 +34,7 @@ export const ProjectRow = (props: ProjectRowProps) => {
     href,
     type,
     releaseDate,
-    isOngoing,
+    status,
     id,
     links: linksDef,
   } = props;
@@ -78,7 +75,7 @@ export const ProjectRow = (props: ProjectRowProps) => {
           </div>
           <div>{releaseDate}</div>
           <div>{type}</div>
-          <div>{isOngoing ? "ONGOING" : "DONE"}</div>
+          <div>{status.toUpperCase()}</div>
           <button className="hover:underline max-w-fit bg-black text-white px-2">
             {"VIEW \\>"}
           </button>
