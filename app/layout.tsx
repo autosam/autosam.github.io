@@ -27,7 +27,7 @@ export default function RootLayout({
 
           <Breadcrumb
             homeElement={<div>INDEX</div>}
-            separator={<div>{">"}</div>}
+            separator={<label>{">"}</label>}
             containerClasses="flex gap-2 text-xs uppercase p-4 py-1"
             activeClasses="font-bold"
             listClasses="hover:underline"

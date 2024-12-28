@@ -35,28 +35,28 @@ Parameters:
 - **StepImpactStrength**: Determines how each step impacts the camera sway
 - **JumpStrength**: Determines jump strength (dependant on global gravity, works much better with physics enabled)
 - **JumpGravity**: Determines internal gravity applied to jump (differs from global gravity but is affected by it, works much better with physics enabled)
-- **KeyMoveForward**, KeyMoveBackward, KeyMoveRight, KeyMoveLeft, KeyRun, KeyJump, KeyCrouch, KeyLeanRight, KeyLeanLeft: Input keys, use uppercase/PascalCase values (like 'E', or 'Space')
+- **KeyMoveForward, KeyMoveBackward, KeyMoveRight, KeyMoveLeft, KeyRun, KeyJump, KeyCrouch, KeyLeanRight, KeyLeanLeft**: Input keys, use uppercase/PascalCase values (like 'E', or 'Space')
 - **KeyLeanToggle**: Determines if the leaning should be toggled or hold
 - **ActionOnFootstep**: An action to invoke when stepping (mainly to play footstep sounds and/or run any other logic)
 
-`
+`;
 
 export default {
-    title: 'SM Firstperson Controller',
-    img: "/projects/smFirstpersonController.png",
-    type: PROJECT_TYPES.BEHAVIOR,
-    releaseDate: 2024,
-    status: PROJECT_STATUSES.ONGOING,
-    id: 'sm-firstperson-controller',
-    description: description,
-    links: [
-        {
-            text: 'Download (v1.0)',
-            url: '/downloads/smFirstpersonController_v1.0.zip'
-        },
-        {
-            text: 'Download Demo',
-            url: '/downloads/smFirstpersonController - Demo1.zip'
-        },
-    ]
-}
+  title: "SM Firstperson Controller",
+  img: "/projects/smFirstpersonController.png",
+  type: PROJECT_TYPES.BEHAVIOR,
+  releaseDate: 2024,
+  status: PROJECT_STATUSES.ONGOING,
+  id: "sm-firstperson-controller",
+  description: description,
+  links: [
+    {
+      text: "Download (v1.0)",
+      url: "/downloads/smFirstpersonController_v1.0.zip",
+    },
+    {
+      text: "Download Demo",
+      url: "/downloads/smFirstpersonController - Demo1.zip",
+    },
+  ],
+};

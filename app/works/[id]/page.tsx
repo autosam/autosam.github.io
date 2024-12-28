@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { uid } from "uid";
+import remarkGfm from "remark-gfm";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({
@@ -76,12 +77,12 @@ export default async function Page({
         </div>
         <br />
         <div className="flex flex-col justify-between gap-1 mb-4">
-          <div className="text-sm">
+          <div className="text-sm flex flex-col gap-2">
             <div>
               <strong>
                 <Scramble text={projectDefinition.title?.toUpperCase()} />
               </strong>
-              <small className="flex gap-2 opacity-75">
+              <small className="flex gap-2 opacity-65">
                 {displayedInfo.map((entry, i) => (
                   <>
                     <span>{entry?.toString().toUpperCase()}</span>
@@ -90,9 +91,10 @@ export default async function Page({
                 ))}
               </small>
             </div>
-            <br />
             <div className="max-w-3xl text-justify prose prose-sm">
-              <Markdown>{projectDefinition.description}</Markdown>
+              <Markdown remarkPlugins={[remarkGfm]}>
+                {projectDefinition.description}
+              </Markdown>
             </div>
           </div>
         </div>
