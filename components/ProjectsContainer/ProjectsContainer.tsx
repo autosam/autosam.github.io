@@ -2,14 +2,14 @@
 
 import { PROJECTS } from "@/constants/projects";
 import { ProjectCard } from "../ProjectCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { uid } from "uid";
 import classNames from "classnames";
 import { ProjectRow } from "../ProjectRow";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { PROJECT_TYPES } from "@/constants/projectTypes";
-import { ProjectProps } from "@/constants/project.types";
+import { Scramble } from "../Scramble";
 
 enum DisplayStyle {
   grid,
@@ -39,6 +39,14 @@ export const ProjectsContainer = () => {
     "flex gap-2 flex-wrap items-end": displayStyle === DisplayStyle.grid,
   });
 
+  const filteredProjects = useMemo(
+    () =>
+      PROJECTS.filter(
+        (p) => activeType === PROJECT_TYPES.ALL || p.type === activeType
+      ),
+    [activeType]
+  );
+
   return (
     <>
       <div className="flex justify-between mb-4 border-b border-black">
@@ -54,7 +62,6 @@ export const ProjectsContainer = () => {
               <Link
                 key={uid()}
                 className={className}
-                // onClick={() => setActiveType(PROJECT_TYPES[t])}
                 href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
               >
                 {isActive && ">"}
@@ -89,14 +96,19 @@ export const ProjectsContainer = () => {
         </div>
       </div>
       <div className={containerClass}>
-        {PROJECTS.filter(
-          (p) => activeType === PROJECT_TYPES.ALL || p.type === activeType
-        ).map((p) =>
-          displayStyle === DisplayStyle.grid ? (
-            <ProjectCard key={uid()} {...p} />
-          ) : (
-            <ProjectRow key={uid()} {...p} />
+        {filteredProjects.length ? (
+          filteredProjects.map((p) =>
+            displayStyle === DisplayStyle.grid ? (
+              <ProjectCard key={uid()} {...p} />
+            ) : (
+              <ProjectRow key={uid()} {...p} />
+            )
           )
+        ) : (
+          <Scramble
+            text="NOTHING HERE YET..."
+            className="italic block opacity-50"
+          />
         )}
       </div>
     </>
