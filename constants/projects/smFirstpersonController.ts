@@ -4,7 +4,7 @@ import { PROJECT_TYPES } from "../projectTypes";
 const description = `
 A modern firstperson controller for CopperCube, featuring crouching, leaning, camera movement animations and much more.
 
-I suggest importing the "smFirstpersonController - Prefab.ccb" into directly into your scene to get started (File -> Import -> CopperCube Scene...).
+I suggest importing the "smFirstpersonController - Prefab.ccb" directly into your scene to get started (File -> Import -> CopperCube Scene...).
 
 Make sure you set the "player_camera" you imported from the prefab as active.
 
