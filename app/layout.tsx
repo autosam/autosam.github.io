@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Smn Mhmdy's Personal Website",
   metadataBase: new URL("https://autosam.github.io"),
   verification: {
-    google: "dAerKFKSFvPgRL2A",
+    google: "dAerKFKSFvPgRL2A-O23ToYFXoNvqHutmDyC2QhvkHM",
   },
 };
 
