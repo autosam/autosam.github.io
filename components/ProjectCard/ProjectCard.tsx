@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Scramble } from "../Scramble";
 import { useState } from "react";
-import { ProjectProps } from "@/constants/project.types";
+import { ProjectProps } from "@/constants/project.consts";
 
 export const ProjectCard = (props: ProjectProps) => {
   const [isHovering, serIsHovering] = useState(false);

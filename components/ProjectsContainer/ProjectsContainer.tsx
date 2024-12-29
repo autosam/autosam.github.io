@@ -8,41 +8,45 @@ import classNames from "classnames";
 import { ProjectRow } from "../ProjectRow";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { PROJECT_TYPES } from "@/constants/projectTypes";
+import { ProjectTypes } from "@/constants/project.consts";
 import { Scramble } from "../Scramble";
 
-enum DisplayStyle {
-  grid,
-  row,
-}
-
 const TYPE_QUERY_PARAM_KEY = "type";
+enum DisplayStyle {
+  Grid,
+  Row,
+}
 
 export const ProjectsContainer = () => {
   const searchParams = useSearchParams();
-  const [activeType, setActiveType] = useState(PROJECT_TYPES.ALL);
-  const [displayStyle, setDisplayStyle] = useState(DisplayStyle.row);
+
+  const queryType = searchParams.get(TYPE_QUERY_PARAM_KEY) ?? "";
+  const resolvedType = useMemo(
+    () => resolveProjectType(queryType),
+    [queryType]
+  );
+
+  const [activeType, setActiveType] = useState<ProjectTypes>(resolvedType);
+  const [displayStyle, setDisplayStyle] = useState(DisplayStyle.Row);
 
   useEffect(() => {
-    const queryType =
-      searchParams.get(TYPE_QUERY_PARAM_KEY)?.toUpperCase() ?? "";
-    setActiveType(PROJECT_TYPES[queryType] ?? PROJECT_TYPES.ALL);
+    setActiveType(resolvedType);
   }, [searchParams]);
 
-  const types = [PROJECT_TYPES.ALL];
+  /* const types = [ProjectTypes.All];
   PROJECTS.forEach((p) => {
-    const type = p.type || PROJECT_TYPES.OTHER;
+    const type = p.type || ProjectTypes.Other;
     return !types.includes(type) && types.push(type);
-  });
+  }); */
 
   const containerClass = classNames({
-    "flex gap-2 flex-wrap items-end": displayStyle === DisplayStyle.grid,
+    "flex gap-2 flex-wrap items-end": displayStyle === DisplayStyle.Grid,
   });
 
   const filteredProjects = useMemo(
     () =>
       PROJECTS.filter(
-        (p) => activeType === PROJECT_TYPES.ALL || p.type === activeType
+        (p) => activeType === ProjectTypes.All || p.type === activeType
       ),
     [activeType]
   );
@@ -52,7 +56,7 @@ export const ProjectsContainer = () => {
       <div className="flex justify-between mb-4 border-b border-black">
         <div className="flex gap-4 w-2/3 overflow-auto">
           {/* {types.map((t) => { */}
-          {Object.keys(PROJECT_TYPES).map((t) => {
+          {Object.keys(ProjectTypes).map((t) => {
             const isActive = activeType === t;
             const className = classNames({
               "hover:underline": true,
@@ -65,11 +69,11 @@ export const ProjectsContainer = () => {
                 href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
               >
                 {isActive && ">"}
-                {t}
+                {t.toUpperCase()}
                 {/* {isActive &&
                 ` (${
                   PROJECTS.filter(
-                    (e) => e.type === t || activeType === PROJECT_TYPES.ALL
+                    (e) => e.type === t || activeType === ProjectTypes.All
                   ).length
                 })`} */}
               </Link>
@@ -79,17 +83,17 @@ export const ProjectsContainer = () => {
         <div className="flex gap-4">
           <button
             className={`hover:underline ${
-              displayStyle === DisplayStyle.grid && "bg-black text-white"
+              displayStyle === DisplayStyle.Grid && "bg-black text-white"
             }`}
-            onClick={() => setDisplayStyle(DisplayStyle.grid)}
+            onClick={() => setDisplayStyle(DisplayStyle.Grid)}
           >
             GRID
           </button>
           <button
             className={`hover:underline ${
-              displayStyle === DisplayStyle.row && "bg-black text-white"
+              displayStyle === DisplayStyle.Row && "bg-black text-white"
             }`}
-            onClick={() => setDisplayStyle(DisplayStyle.row)}
+            onClick={() => setDisplayStyle(DisplayStyle.Row)}
           >
             ROW
           </button>
@@ -98,7 +102,7 @@ export const ProjectsContainer = () => {
       <div className={containerClass}>
         {filteredProjects.length ? (
           filteredProjects.map((p) =>
-            displayStyle === DisplayStyle.grid ? (
+            displayStyle === DisplayStyle.Grid ? (
               <ProjectCard key={uid()} {...p} />
             ) : (
               <ProjectRow key={uid()} {...p} />
@@ -113,4 +117,12 @@ export const ProjectsContainer = () => {
       </div>
     </>
   );
+};
+
+const resolveProjectType = (name?: string): ProjectTypes => {
+  if (!name) return ProjectTypes.All;
+
+  const capitalized =
+    name[0].toUpperCase() + name.toLowerCase().slice(1, name.length);
+  return ProjectTypes[capitalized] || ProjectTypes.All;
 };

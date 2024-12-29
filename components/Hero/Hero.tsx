@@ -4,7 +4,7 @@ import { Scramble } from "../Scramble";
 export const Hero = () => {
   return (
     <div className="w-full h-72 bg-black text-white overflow-hidden relative border border-black select-none">
-      <label className=" absolute z-10 top-0 left-0 w-full h-full text-9xl flex gap-2 -m-8 justify-center">
+      <label className=" absolute z-10 top-8 left-8 w-full h-full text-9xl flex gap-2 -m-8 justify-center">
         {new Array(6).fill(1).map((_, i) => (
           <div
             key={uid()}

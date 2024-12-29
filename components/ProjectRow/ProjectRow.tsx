@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Scramble } from "../Scramble";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
-import { ProjectProps } from "@/constants/project.types";
+import { ProjectProps } from "@/constants/project.consts";
 
 export const ProjectRow = (props: ProjectProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -72,7 +72,7 @@ export const ProjectRow = (props: ProjectProps) => {
             />
           </div>
           <div>{releaseDate}</div>
-          <div>{type}</div>
+          <div>{type?.toUpperCase()}</div>
           <div>{status.toUpperCase()}</div>
           <button className="hover:underline max-w-fit bg-black text-white px-2">
             {"VIEW \\>"}

@@ -19,7 +19,6 @@ export async function generateMetadata(
   { params },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
   const id = (await params).id;
   const projectDefinition = PROJECTS.find((p) => id === p.id);
   if (!projectDefinition) return {};
@@ -55,8 +54,10 @@ export default async function Page({
   const displayedInfo = [
     projectDefinition.releaseDate,
     projectDefinition.type,
+    projectDefinition.engine,
+    projectDefinition.platforms?.join(", "),
     projectDefinition.status,
-  ];
+  ].filter((i) => i);
 
   return (
     <>

@@ -11,7 +11,7 @@ export const Footer = () => {
           Youtube
         </FooterLink>
         <FooterLink href="https://samgamesio.itch.io">
-          Samgames (itch)
+          SamGames (itch)
         </FooterLink>
         <FooterLink href="https://samandev.itch.io">SamanDev (itch)</FooterLink>
         <FooterLink href="https://gamejolt.com/@samandev">

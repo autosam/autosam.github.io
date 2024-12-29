@@ -1,6 +1,9 @@
-import { ProjectProps } from "./project.types";
-import { PROJECT_STATUSES } from "./projectStatuses";
-import { PROJECT_TYPES } from "./projectTypes";
+import {
+  ProjectStatuses,
+  ProjectTypes,
+  ProjectPlatforms,
+  ProjectProps,
+} from "./project.consts";
 import smFirstpersonController from "./projects/smFirstpersonController";
 
 export const PROJECTS: ProjectProps[] = [
@@ -9,9 +12,14 @@ export const PROJECTS: ProjectProps[] = [
     title: "Tamaweb",
     img: "/projects/tamaweb.png",
     href: "https://tamawebgame.github.io",
-    type: PROJECT_TYPES.WEBSITE,
+    type: ProjectTypes.Website,
     releaseDate: 2023,
-    status: PROJECT_STATUSES.ONGOING,
+    status: ProjectStatuses.Ongoing,
+    platforms: [
+      ProjectPlatforms.HTML5,
+      ProjectPlatforms.Windows,
+      ProjectPlatforms.Phone,
+    ],
     id: "tamaweb",
     description: `Your Virtual Pet Adventure Awaits!
       Raise, Care, and Adventure with Your Virtual Pet! Enter a vibrant world where your digital pet relies on you for everything!
@@ -22,9 +30,9 @@ export const PROJECTS: ProjectProps[] = [
     title: "The Wall Project",
     img: "/projects/thewall.png",
     href: "https://thewallproject.vercel.app",
-    type: PROJECT_TYPES.WEBSITE,
+    type: ProjectTypes.Website,
     releaseDate: 2024,
-    status: PROJECT_STATUSES.ONGOING,
+    status: ProjectStatuses.Ongoing,
     id: "the-wall-project",
     description: `A platform built on anonymity and freedom of speech. Let the collective conscience decide the validity of an statement.`,
   },
@@ -32,9 +40,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "Spectral Vile Mimic",
     img: "/projects/spectralvilemimic.png",
     href: "https://smnmhmdy.itch.io/spectral-vile-mimic",
-    type: PROJECT_TYPES.GAME,
+    platforms: [ProjectPlatforms.Windows],
+    type: ProjectTypes.Game,
     releaseDate: 2024,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
     id: "spectral-vile-mimic",
     description: `A house that shifts, a presence that stalks. Each sigil pulls you deeper into a world that’s slipping away. Shadows watch. Walls bleed. Nothing is what it seems. Run. Hide. Follow the sound. Find the sigils.`,
   },
@@ -42,9 +51,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "Duzakh (Beta)",
     img: "/projects/duzakh.png",
     href: "https://samgamesio.itch.io/duzakh-beta",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2022,
-    status: PROJECT_STATUSES.ON_HOLD,
+    status: ProjectStatuses.OnHold,
+    platforms: [ProjectPlatforms.Windows],
     id: "duzakh",
     description: `YOU LIVE IN THE DEPTHS OF HELL, SURROUNDED BY THE SHAPE SHIFTING HALLWAYS OF DEATH.
     Duzakh is a Retro-inspired roguelike first person shooter game set in procedurally generated dungeons. 
@@ -55,9 +65,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "CopperCraft",
     img: "/projects/coppercraft.png",
     href: "https://samgamesio.itch.io/coppercraft",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2021,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
+    platforms: [ProjectPlatforms.Windows],
     id: "coppercraft",
     description: `Originally made to test out CopperCube engine's capabilities in handling voxel-based interactable environments similar to games like Minecraft, then expanded upon for a "clone" themed CopperCube game jam.
     The game contains randomly generated islands with caves, biomes, ores, tools etc.`,
@@ -66,9 +77,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "Flyborn",
     img: "/projects/flyborn.webp",
     href: "https://play.google.com/store/apps/details?id=com.vcreations.flyborn&hl=en",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2021,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
+    platforms: [ProjectPlatforms.Android],
     id: "flyborn",
     description: `FLYBORN is a score-based based endless free-falling game. Dodge some obstacles, smash into others, use your abilities, and free the world from the terror of the dark gods, the ones who have been ravaging and turning everything and everyone into dark monsters, yourself included.`,
     links: [
@@ -86,9 +98,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "EverRage",
     img: "/projects/everrage.png",
     href: "https://samgamesio.itch.io/everrage",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2021,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
+    platforms: [ProjectPlatforms.Windows],
     id: "everrage",
     description: `Originally made in 2 days as a part of a challenge, In this bloody game you can tear through the bad guys using your upgradable handy gun!
     INCREASE YOUR DEADLINESS
@@ -99,9 +112,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "MasterTest",
     img: "/projects/mastertest.png",
     href: "https://samgamesio.itch.io/mastertest",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2021,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
+    platforms: [ProjectPlatforms.Windows],
     id: "mastertest",
     description: `You wake up in an abandoned, mostly overgrown laboratory, and have to escape it using your only power; moving and re scaling objects with your perspective.`,
   },
@@ -109,9 +123,10 @@ export const PROJECTS: ProjectProps[] = [
     title: "Dim - Playable Demo",
     img: "/projects/dim_pd.png",
     href: "https://smnmhmdy.itch.io/dim-demo",
-    type: PROJECT_TYPES.GAME,
+    type: ProjectTypes.Game,
     releaseDate: 2019,
-    status: PROJECT_STATUSES.DONE,
+    status: ProjectStatuses.Done,
+    platforms: [ProjectPlatforms.Windows],
     id: "dim-playable-demo",
     description: `Dim - Teaser is a free playable demo for an ~~upcoming~~ horror game. 
     This demo takes place in a small part of a house, where you play as an unnamed protagonist with a "very specific" back story which makes him know what's going on, well, him, not you.

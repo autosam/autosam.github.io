@@ -1,5 +1,4 @@
-import { PROJECT_STATUSES } from "../projectStatuses";
-import { PROJECT_TYPES } from "../projectTypes";
+import { ProjectStatuses, ProjectTypes, ProjectProps } from "../project.consts";
 
 const description = `
 A modern firstperson controller for CopperCube, featuring crouching, leaning, camera movement animations and much more.
@@ -41,14 +40,15 @@ Parameters:
 
 `;
 
-export default {
+export default <ProjectProps>{
   title: "SM Firstperson Controller",
   img: "/projects/smFirstpersonController.png",
-  type: PROJECT_TYPES.BEHAVIOR,
+  type: ProjectTypes.Behavior,
   releaseDate: 2024,
-  status: PROJECT_STATUSES.ONGOING,
+  status: ProjectStatuses.Ongoing,
   id: "sm-firstperson-controller",
   description: description,
+  engine: "CopperCube",
   links: [
     {
       text: "Download (v1.0)",
