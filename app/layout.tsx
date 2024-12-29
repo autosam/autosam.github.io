@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   verification: {
     google: "dAerKFKSFvPgRL2A-O23ToYFXoNvqHutmDyC2QhvkHM",
   },
+  keywords: [
+    "saman mohammadi",
+    "Web development",
+    "Game development",
+    "CopperCube",
+    "Autosam",
+  ],
 };
 
 export default function RootLayout({
