@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Smn Mhmdy",
   description: "Smn Mhmdy's Personal Website",
   metadataBase: new URL("https://autosam.github.io"),
+  verification: {
+    google: "dAerKFKSFvPgRL2A",
+  },
 };
 
 export default function RootLayout({
