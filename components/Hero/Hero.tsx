@@ -7,7 +7,7 @@ export const Hero = () => {
       <label className=" absolute z-10 top-8 left-8 w-full h-full text-9xl flex gap-2 -m-8 justify-center">
         {new Array(6).fill(1).map((_, i) => (
           <div
-            key={uid()}
+            key={i}
             style={{
               animationDelay: `${250 * -i}ms`,
             }}
