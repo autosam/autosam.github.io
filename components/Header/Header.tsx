@@ -5,7 +5,7 @@ import { Scramble } from "../Scramble";
 
 export const Header = () => {
   return (
-    <div className="bg-white px-4 text-sm sticky top-0 left-0 w-full h-16 flex justify-start items-center z-20 [&>*]:w-25%">
+    <div className="bg-white px-4 text-sm sticky top-0 left-0 w-full h-16 flex justify-start items-center z-50 __header [&>*]:w-25%">
       <Link href="/" className="flex items-center gap-3">
         <img className="h-10" src="/logo2.png" />
         <div className="font-bold flex flex-col">

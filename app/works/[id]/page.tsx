@@ -53,7 +53,9 @@ export default async function Page({
 
   const displayedInfo = [
     projectDefinition.releaseDate,
-    projectDefinition.type,
+    [projectDefinition.genre, projectDefinition.type]
+      .filter((e) => e)
+      .join(" "),
     projectDefinition.engine,
     projectDefinition.platforms?.join(", "),
     projectDefinition.status,
@@ -87,7 +89,7 @@ export default async function Page({
                 {displayedInfo.map((entry, i) => (
                   <>
                     <span>{entry?.toString().toUpperCase()}</span>
-                    {i !== displayedInfo.length - 1 && <span>///</span>}
+                    {i !== displayedInfo.length - 1 && <span>//</span>}
                   </>
                 ))}
               </small>

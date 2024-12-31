@@ -20,6 +20,16 @@ export enum ProjectPlatforms {
   Browser = "Browser",
 }
 
+export enum ProjectGenres {
+  FPS = "First Person Shooter",
+  Casual = "Casual",
+  Horror = "Horror",
+  Simulation = "Simulation",
+  Puzzle = "Puzzle",
+  TopDown = "Top-Down",
+  Social = "Social",
+}
+
 export type ProjectProps = {
   title: string;
   img?: string;
@@ -33,4 +43,5 @@ export type ProjectProps = {
   platforms?: ProjectPlatforms[];
   engine?: string;
   tags?: [];
+  genre?: ProjectGenres;
 };

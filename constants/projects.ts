@@ -3,6 +3,7 @@ import {
   ProjectTypes,
   ProjectPlatforms,
   ProjectProps,
+  ProjectGenres,
 } from "./project.consts";
 import smFirstpersonController from "./projects/smFirstpersonController";
 
@@ -20,6 +21,7 @@ export const PROJECTS: ProjectProps[] = [
       ProjectPlatforms.Windows,
       ProjectPlatforms.Phone,
     ],
+    genre: ProjectGenres.Simulation,
     id: "tamaweb",
     description: `Your Virtual Pet Adventure Awaits!
       Raise, Care, and Adventure with Your Virtual Pet! Enter a vibrant world where your digital pet relies on you for everything!
@@ -33,6 +35,7 @@ export const PROJECTS: ProjectProps[] = [
     type: ProjectTypes.Website,
     releaseDate: 2024,
     status: ProjectStatuses.Ongoing,
+    genre: ProjectGenres.Social,
     id: "the-wall-project",
     description: `A platform built on anonymity and freedom of speech. Let the collective conscience decide the validity of an statement.`,
   },
@@ -44,6 +47,7 @@ export const PROJECTS: ProjectProps[] = [
     type: ProjectTypes.Game,
     releaseDate: 2024,
     status: ProjectStatuses.Done,
+    genre: ProjectGenres.Horror,
     id: "spectral-vile-mimic",
     description: `A house that shifts, a presence that stalks. Each sigil pulls you deeper into a world that’s slipping away. Shadows watch. Walls bleed. Nothing is what it seems. Run. Hide. Follow the sound. Find the sigils.`,
   },
@@ -55,6 +59,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2022,
     status: ProjectStatuses.OnHold,
     platforms: [ProjectPlatforms.Windows],
+    genre: ProjectGenres.FPS,
     id: "duzakh",
     description: `YOU LIVE IN THE DEPTHS OF HELL, SURROUNDED BY THE SHAPE SHIFTING HALLWAYS OF DEATH.
     Duzakh is a Retro-inspired roguelike first person shooter game set in procedurally generated dungeons. 
@@ -69,6 +74,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2021,
     status: ProjectStatuses.Done,
     platforms: [ProjectPlatforms.Windows],
+    genre: ProjectGenres.Simulation,
     id: "coppercraft",
     description: `Originally made to test out CopperCube engine's capabilities in handling voxel-based interactable environments similar to games like Minecraft, then expanded upon for a "clone" themed CopperCube game jam.
     The game contains randomly generated islands with caves, biomes, ores, tools etc.`,
@@ -81,6 +87,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2021,
     status: ProjectStatuses.Done,
     platforms: [ProjectPlatforms.Android],
+    genre: ProjectGenres.Casual,
     id: "flyborn",
     description: `FLYBORN is a score-based based endless free-falling game. Dodge some obstacles, smash into others, use your abilities, and free the world from the terror of the dark gods, the ones who have been ravaging and turning everything and everyone into dark monsters, yourself included.`,
     links: [
@@ -102,6 +109,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2021,
     status: ProjectStatuses.Done,
     platforms: [ProjectPlatforms.Windows],
+    genre: ProjectGenres.TopDown,
     id: "everrage",
     description: `Originally made in 2 days as a part of a challenge, In this bloody game you can tear through the bad guys using your upgradable handy gun!
     INCREASE YOUR DEADLINESS
@@ -116,6 +124,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2021,
     status: ProjectStatuses.Done,
     platforms: [ProjectPlatforms.Windows],
+    genre: ProjectGenres.Puzzle,
     id: "mastertest",
     description: `You wake up in an abandoned, mostly overgrown laboratory, and have to escape it using your only power; moving and re scaling objects with your perspective.`,
   },
@@ -127,6 +136,7 @@ export const PROJECTS: ProjectProps[] = [
     releaseDate: 2019,
     status: ProjectStatuses.Done,
     platforms: [ProjectPlatforms.Windows],
+    genre: ProjectGenres.Horror,
     id: "dim-playable-demo",
     description: `Dim - Teaser is a free playable demo for an ~~upcoming~~ horror game. 
     This demo takes place in a small part of a house, where you play as an unnamed protagonist with a "very specific" back story which makes him know what's going on, well, him, not you.

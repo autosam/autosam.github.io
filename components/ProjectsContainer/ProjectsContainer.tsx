@@ -40,7 +40,7 @@ export const ProjectsContainer = () => {
   }); */
 
   const containerClass = classNames({
-    "flex gap-2 flex-wrap items-end": displayStyle === DisplayStyle.Grid,
+    "flex gap-2 flex-wrap items-start": displayStyle === DisplayStyle.Grid,
   });
 
   const filteredProjects = useMemo(
