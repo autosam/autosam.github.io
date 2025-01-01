@@ -25,7 +25,8 @@ export const ProjectCard = (props: ProjectProps) => {
   return (
     <Link className="flex-grow w-1/5" href={hrefTarget ?? "#"} target={target}>
       <div
-        className="flex flex-col w-full h-fit relative hover:underline"
+        // className="flex flex-col w-full h-fit relative hover:underline"
+        className="project__container-item"
         onMouseLeave={() => serIsHovering(false)}
         onMouseEnter={() => serIsHovering(true)}
       >

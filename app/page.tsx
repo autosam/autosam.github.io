@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatedLoading } from "@/components/AnimatedLoading";
 import { Hero } from "@/components/Hero";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
 import { Suspense } from "react";
@@ -12,7 +13,7 @@ export default function Page() {
       </div>
       <div className="my-8" />
       {/* <div className="mt-96" /> */}
-      <Suspense>
+      <Suspense fallback={<AnimatedLoading />}>
         <ProjectsContainer />
       </Suspense>
     </div>

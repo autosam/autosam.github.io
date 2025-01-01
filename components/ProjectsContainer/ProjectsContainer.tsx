@@ -10,9 +10,13 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ProjectTypes } from "@/constants/project.consts";
 import { Scramble } from "../Scramble";
+import { PROJECTS_DISPLAY_STYLE } from "@/constants/localStorageKeys";
+import { AnimatedLoading } from "../AnimatedLoading";
 
 const TYPE_QUERY_PARAM_KEY = "type";
+
 enum DisplayStyle {
+  None,
   Grid,
   Row,
 }
@@ -27,7 +31,21 @@ export const ProjectsContainer = () => {
   );
 
   const [activeType, setActiveType] = useState<ProjectTypes>(resolvedType);
-  const [displayStyle, setDisplayStyle] = useState(DisplayStyle.Row);
+  const [displayStyle, setDisplayStyle] = useState<DisplayStyle>(
+    DisplayStyle.None
+  );
+
+  useEffect(() => {
+    const localDisplayStyle = getLocalStorageDisplayStyle();
+    if (localDisplayStyle !== DisplayStyle.None)
+      setDisplayStyle(localDisplayStyle);
+    else setDisplayStyle(DisplayStyle.Row);
+  }, []);
+
+  useEffect(() => {
+    if (displayStyle === DisplayStyle.None) return;
+    localStorage?.setItem(PROJECTS_DISPLAY_STYLE, String(displayStyle));
+  }, [displayStyle]);
 
   useEffect(() => {
     setActiveType(resolvedType);
@@ -40,7 +58,8 @@ export const ProjectsContainer = () => {
   }); */
 
   const containerClass = classNames({
-    "flex gap-2 flex-wrap items-start": displayStyle === DisplayStyle.Grid,
+    // "flex gap-2 flex-wrap items-start": displayStyle === DisplayStyle.Grid,
+    projects__container: displayStyle === DisplayStyle.Grid,
   });
 
   const filteredProjects = useMemo(
@@ -51,35 +70,35 @@ export const ProjectsContainer = () => {
     [activeType]
   );
 
-  return (
-    <>
-      <div className="flex justify-between mb-4 border-b border-black">
-        <div className="flex gap-4 w-2/3 overflow-auto">
-          {/* {types.map((t) => { */}
-          {Object.keys(ProjectTypes).map((t) => {
-            const isActive = activeType === t;
-            const className = classNames({
-              "hover:underline": true,
-              "bg-black text-white": isActive,
-            });
-            return (
-              <Link
-                key={uid()}
-                className={className}
-                href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
-              >
-                {isActive && ">"}
-                {t.toUpperCase()}
-                {/* {isActive &&
-                ` (${
-                  PROJECTS.filter(
-                    (e) => e.type === t || activeType === ProjectTypes.All
-                  ).length
-                })`} */}
-              </Link>
-            );
-          })}
-        </div>
+  const ControlComponent = () => (
+    <div className="flex justify-between mb-4 border-b border-black">
+      <div className="flex gap-4 w-2/3 overflow-auto">
+        {/* {types.map((t) => { */}
+        {Object.keys(ProjectTypes).map((t) => {
+          const isActive = activeType === t;
+          const className = classNames({
+            "hover:underline": true,
+            "bg-black text-white": isActive,
+          });
+          return (
+            <Link
+              key={uid()}
+              className={className}
+              href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
+            >
+              {isActive && ">"}
+              {t.toUpperCase()}
+              {/* {isActive &&
+          ` (${
+            PROJECTS.filter(
+              (e) => e.type === t || activeType === ProjectTypes.All
+            ).length
+          })`} */}
+            </Link>
+          );
+        })}
+      </div>
+      {displayStyle !== DisplayStyle.None && (
         <div className="flex gap-4">
           <button
             className={`hover:underline ${
@@ -98,14 +117,28 @@ export const ProjectsContainer = () => {
             ROW
           </button>
         </div>
-      </div>
+      )}
+    </div>
+  );
+
+  if (displayStyle === DisplayStyle.None)
+    return (
+      <>
+        <ControlComponent />
+        <AnimatedLoading />
+      </>
+    );
+
+  return (
+    <>
+      <ControlComponent />
       <div className={containerClass}>
         {filteredProjects.length ? (
           filteredProjects.map((p) =>
             displayStyle === DisplayStyle.Grid ? (
-              <ProjectCard key={uid()} {...p} />
+              <ProjectCard key={p.id} {...p} />
             ) : (
-              <ProjectRow key={uid()} {...p} />
+              <ProjectRow key={p.id} {...p} />
             )
           )
         ) : (
@@ -125,4 +158,21 @@ const resolveProjectType = (name?: string): ProjectTypes => {
   const capitalized =
     name[0].toUpperCase() + name.toLowerCase().slice(1, name.length);
   return ProjectTypes[capitalized] || ProjectTypes.All;
+};
+
+const getLocalStorageDisplayStyle = (): DisplayStyle => {
+  try {
+    const storedValue = localStorage?.getItem(PROJECTS_DISPLAY_STYLE);
+
+    if (storedValue) {
+      const parsedValue = Number(storedValue);
+      if (Object.values(DisplayStyle).includes(parsedValue)) {
+        return parsedValue as DisplayStyle;
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  return DisplayStyle.Row;
 };

@@ -24,3 +24,35 @@ export const userGenderWithEffectAtom = atom(
 );
 
 export const postsAtom = atom<TalkData[]>(); */
+/* import { atom, useAtom } from "jotai";
+import { DisplayStyle } from "./constants/projectDisplayStyles";
+
+const CLIENT_KEYS = {
+  PROJECT_DISPLAY_TYPE: "client-projects-display-type",
+};
+
+const getInitialDisplayStyle = (): DisplayStyle => {
+  try {
+    const storedValue = localStorage?.getItem(CLIENT_KEYS.PROJECT_DISPLAY_TYPE);
+
+    if (storedValue) {
+      const parsedValue = Number(storedValue);
+      if (Object.values(DisplayStyle).includes(parsedValue)) {
+        return parsedValue as DisplayStyle;
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  return DisplayStyle.Row;
+};
+
+const _projectsDisplayStyleAtom = atom<DisplayStyle>(getInitialDisplayStyle());
+export const projectsDisplayStyleAtom = atom(
+  (get) => get(_projectsDisplayStyleAtom),
+  (_, set, newValue) => {
+    set(_projectsDisplayStyleAtom, newValue as DisplayStyle);
+    localStorage?.setItem(CLIENT_KEYS.PROJECT_DISPLAY_TYPE, newValue as string);
+  }
+); */

@@ -24,6 +24,20 @@ body {
   background-color: rgb(170, 170, 170);
 }
 
+.projects__container {
+  width: 100%;
+  margin: 0 auto;
+  columns: 4 300px;
+  column-gap: 1em;
+}
+
+.project__container-item {
+  display: block;
+  margin-bottom: 1em;
+  position: relative;
+  width: 100%;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

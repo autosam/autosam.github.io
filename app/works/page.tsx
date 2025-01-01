@@ -1,5 +1,6 @@
+import { AnimatedLoading } from "@/components/AnimatedLoading";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="text-xs">
-      <Suspense>
+      <Suspense fallback={<AnimatedLoading />}>
         <ProjectsContainer />
       </Suspense>
     </div>
