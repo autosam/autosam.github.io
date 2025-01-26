@@ -28,7 +28,7 @@ export const Footer = () => {
         <Scramble text="Programmer // Web Developer // Game Developer // Persian // 24YRS" />
       </div>
       <br />
-      <Scramble text="© 2024" />
+      <Scramble text="© 2025" />
       <Scramble text="Independently run." />
       <Scramble text="Power to freedom." />
       <br />
