@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: http://autosam.github.io/
+
+# Sitemaps
+Sitemap: http://autosam.github.io/sitemap.xml
