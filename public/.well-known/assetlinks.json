@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.autosam.twa",
+        "sha256_cert_fingerprints": ["39:8A:A9:52:43:33:4A:B6:89:E6:54:FF:8F:C0:9A:82:51:4B:FC:8F:E6:FD:AB:08:2A:B0:67:0A:60:88:BC:06"]
+      }
+    }]
