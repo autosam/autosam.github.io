@@ -13,6 +13,8 @@ export default function Page() {
 
   const bigHeroRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    setIsHeaderVisible(false);
+
     const handleScroll = () => {
       const bigHero = bigHeroRef.current;
       const bigHeroHeight = bigHero
@@ -33,7 +35,14 @@ export default function Page() {
     <>
       <BigHero ref={bigHeroRef} />
       <div className="text-xs p-4">
-        <div>
+        <section className="text-[200px] leading-none flex flex-col justify-center items-center h-screen">
+          <label>
+            <h1>MAKE</h1>
+            <h1>THINGS</h1>
+            <h1 className="font-extrabold">HAPPEN.</h1>
+          </label>
+        </section>
+        <div className="my-8">
           <Hero />
         </div>
         <div className="my-8" />

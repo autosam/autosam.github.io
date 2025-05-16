@@ -6,6 +6,9 @@ import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { uid } from "uid";
 import remarkGfm from "remark-gfm";
+import { useAtom } from "jotai";
+import { headerVisibilityAtom } from "@/store";
+import { useEffect } from "react";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({
@@ -63,7 +66,7 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex gap-2 flex-wrap gap-y-8">
+      <div className="flex gap-2 flex-wrap gap-y-8 p-4">
         <div className="gap-2 flex flex-col">
           <img className="w-80 h-fit" src={projectDefinition.img} />
           {links.map((link) => (

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="text-xs">
+    <div className="text-xs p-4">
       <Suspense fallback={<AnimatedLoading />}>
         <ProjectsContainer />
       </Suspense>

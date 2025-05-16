@@ -20,8 +20,11 @@ enum DisplayStyle {
   Grid,
   Row,
 }
-
-export const ProjectsContainer = () => {
+type Props = {
+  showFilter?: boolean;
+  displayStyleOverride?: boolean;
+};
+export const ProjectsContainer = ({ showFilter }: Props) => {
   const searchParams = useSearchParams();
 
   const queryType = searchParams.get(TYPE_QUERY_PARAM_KEY) ?? "";
