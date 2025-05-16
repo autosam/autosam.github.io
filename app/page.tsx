@@ -1,21 +1,47 @@
 "use client";
 
 import { AnimatedLoading } from "@/components/AnimatedLoading";
+import { BigHero } from "@/components/BigHero";
 import { Hero } from "@/components/Hero";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
-import { Suspense } from "react";
+import { headerVisibilityAtom } from "@/store";
+import { useAtom } from "jotai";
+import { Suspense, useEffect, useRef } from "react";
 
 export default function Page() {
+  const [isHeaderVisible, setIsHeaderVisible] = useAtom(headerVisibilityAtom);
+
+  const bigHeroRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const bigHero = bigHeroRef.current;
+      const bigHeroHeight = bigHero
+        ? bigHero.getBoundingClientRect().height
+        : 0;
+
+      const scrollY = window.scrollY;
+      setIsHeaderVisible(scrollY > bigHeroHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="text-xs">
-      <div className="-mt-2">
-        <Hero />
+    <>
+      <BigHero ref={bigHeroRef} />
+      <div className="text-xs p-4">
+        <div>
+          <Hero />
+        </div>
+        <div className="my-8" />
+        {/* <div className="mt-96" /> */}
+        <Suspense fallback={<AnimatedLoading />}>
+          <ProjectsContainer />
+        </Suspense>
       </div>
-      <div className="my-8" />
-      {/* <div className="mt-96" /> */}
-      <Suspense fallback={<AnimatedLoading />}>
-        <ProjectsContainer />
-      </Suspense>
-    </div>
+    </>
   );
 }

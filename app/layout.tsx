@@ -43,7 +43,7 @@ export default function RootLayout({
             activeClasses="font-bold"
             listClasses="hover:underline"
           />
-          <div className="p-4">{children}</div>
+          <div>{children}</div>
           <Footer />
           <GoogleAnalytics gaId="G-1THW58E0S2" />
         </div>

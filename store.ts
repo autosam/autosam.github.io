@@ -56,3 +56,7 @@ export const projectsDisplayStyleAtom = atom(
     localStorage?.setItem(CLIENT_KEYS.PROJECT_DISPLAY_TYPE, newValue as string);
   }
 ); */
+
+import { atom, useAtom } from "jotai";
+
+export const headerVisibilityAtom = atom(false);
