@@ -12,7 +12,7 @@ export const AnimatedCursor = () => {
 
   useEffect(() => {
     const cursor = cursorRef.current;
-    const links = document.querySelectorAll("a");
+    const links = document.querySelectorAll("a, [data-hover]");
 
     if (!cursor) return;
 

@@ -18,11 +18,13 @@ export const Header = () => {
       setIsHeaderVisible(true);
     }
   }, [pathname, setIsHeaderVisible]);
+
   const className = classNames(
-    "bg-white px-4 text-sm sticky top-0 left-0 w-full h-16 flex justify-start items-center z-50 __header [&>*]:w-25% transition-all duration-500",
+    "bg-white px-4 text-sm sticky top-0 left-0 w-full flex justify-start items-center z-40 __header [&>*]:w-25% transition-all duration-500",
     {
       "h-0 overflow-hidden opacity-0 duration-200 pointer-events-none":
         !isVisible,
+      "h-16": isVisible,
     }
   );
 

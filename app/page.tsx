@@ -5,6 +5,7 @@ import { BigHero } from "@/components/BigHero";
 import { Hero } from "@/components/Hero";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
 import { headerVisibilityAtom } from "@/store";
+import { ProjectsDisplayStyle } from "@/types/ProjectsDisplayStyle";
 import { useAtom } from "jotai";
 import { Suspense, useEffect, useRef } from "react";
 
@@ -24,6 +25,7 @@ export default function Page() {
       const scrollY = window.scrollY;
       setIsHeaderVisible(scrollY > bigHeroHeight);
     };
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -36,11 +38,11 @@ export default function Page() {
       <BigHero ref={bigHeroRef} />
       <div className="text-xs p-4">
         <section className="text-[200px] leading-none flex flex-col justify-center items-center h-screen">
-          <label>
+          <a href="#">
             <h1>MAKE</h1>
             <h1>THINGS</h1>
             <h1 className="font-extrabold">HAPPEN.</h1>
-          </label>
+          </a>
         </section>
         <div className="my-8">
           <Hero />
@@ -48,7 +50,10 @@ export default function Page() {
         <div className="my-8" />
         {/* <div className="mt-96" /> */}
         <Suspense fallback={<AnimatedLoading />}>
-          <ProjectsContainer />
+          <ProjectsContainer
+            hideFilters
+            displayStyleOverride={ProjectsDisplayStyle.Grid}
+          />
         </Suspense>
       </div>
     </>

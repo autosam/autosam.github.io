@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: rgb(255, 255, 255);
   color: rgb(15, 15, 15);
@@ -67,3 +71,53 @@ body {
     text-wrap: balance;
   }
 } */
+
+.animate-noise {
+  animation: noise 1s infinite step-end;
+}
+
+@keyframes noise {
+  0% {
+    background-position: 0 0;
+  }
+
+  10% {
+    background-position: 2px 50px;
+  }
+
+  20% {
+    background-position: -90px 85px;
+  }
+
+  30% {
+    background-position: -50px 0;
+  }
+
+  40% {
+    background-position: -20px 50px;
+  }
+
+  50% {
+    background-position: -10px 0;
+  }
+
+  60% {
+    background-position: -30px 50px;
+  }
+
+  70% {
+    background-position: -50px 0;
+  }
+
+  80% {
+    background-position: -70px 50px;
+  }
+
+  90% {
+    background-position: -90px 0;
+  }
+
+  100% {
+    background-position: -100px 50px;
+  }
+}

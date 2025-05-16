@@ -13,7 +13,8 @@ export const BigHero = ({ ref }: Types) => {
   const [isVisible] = useAtom(headerVisibilityAtom);
 
   const className = classNames(
-    "w-full h-svh bg-black text-white relative overflow-hidden transition-all duration-500",
+    "w-full h-svh bg-black text-white relative overflow-hidden transition-all duration-500 bg-[url('/noise_01.png')] bg-center bg-repeat",
+    "animate-noise",
     {
       "scale-[0.95] invert rounded-3xl": isVisible,
     }
@@ -44,43 +45,18 @@ export const BigHero = ({ ref }: Types) => {
           <div className="flex flex-col justify-start items-start">
             <span className="opacity-25">[ DIRECTORY ]</span>
             <Link href="/works" className="hover:underline">
-              PROJECTS
+              {">"}PROJECTS
             </Link>
             <div className="text-xs">
               <Projects />
             </div>
-            <Link
-              href="https://smnmhmdy.itch.io"
-              target="_blank"
-              className="hover:underline"
-            >
-              ITCH
-            </Link>
-            <Link
-              href="https://smnmhmdy.itch.io"
-              target="_blank"
-              className="hover:underline"
-            >
-              GAMEJOLT
-            </Link>
-            <Link
-              href="https://smnmhmdy.itch.io"
-              target="_blank"
-              className="hover:underline"
-            >
-              SAMEGAMESIO
-            </Link>
-
-            <Link
-              href="https://smnmhmdy.itch.io"
-              target="_blank"
-              className="hover:underline"
-            >
-              SAMANDEV
-            </Link>
+            <ExternalLink text="ITCH" href="https://smnmhmdy.itch.io" />
+            <ExternalLink text="GAMEJOLT" href="https://smnmhmdy.itch.io" />
+            <ExternalLink text="SAMEGAMESIO" href="https://smnmhmdy.itch.io" />
+            <ExternalLink text="SAMANDEV" href="https://smnmhmdy.itch.io" />
           </div>
           <div className="-my-4 inline-flex justify-center items-end">
-            <img className="w-40" src="drawing_image_01.png"></img>
+            <img data-hover className="w-40" src="drawing_image_01.png"></img>
           </div>
           <div className="flex flex-col justify-start items-start">
             <span>WEB DEVELOPER</span>
@@ -93,6 +69,19 @@ export const BigHero = ({ ref }: Types) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const ExternalLink = ({ text, href }: { text: string; href: string }) => {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      className="hover:underline inline-flex gap-2 items-center"
+    >
+      {text}
+      <img src="/external_link_01.png" className="w-2 inline-block" />
+    </Link>
   );
 };
 
