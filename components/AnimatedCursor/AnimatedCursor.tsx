@@ -64,6 +64,6 @@ export const AnimatedCursor = () => {
       }}
       className={className}
       ref={cursorRef}
-    ></div>
+    />
   );
 };

@@ -37,7 +37,7 @@ export default function Page() {
     <>
       <BigHero ref={bigHeroRef} />
       <div className="text-xs p-4">
-        <section className="text-[200px] leading-none flex flex-col justify-center items-center h-screen">
+        <section className="text-[12vw] leading-none flex flex-col justify-center items-center h-screen">
           <a href="#">
             <h1>MAKE</h1>
             <h1>THINGS</h1>
