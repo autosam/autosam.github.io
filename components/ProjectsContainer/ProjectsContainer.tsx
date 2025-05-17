@@ -18,10 +18,12 @@ const TYPE_QUERY_PARAM_KEY = "type";
 
 type Props = {
   hideFilters?: boolean;
+  hideTypeFilters?: boolean;
   displayStyleOverride?: DisplayStyle;
 };
 export const ProjectsContainer = ({
   hideFilters,
+  hideTypeFilters,
   displayStyleOverride,
 }: Props) => {
   const searchParams = useSearchParams();
@@ -83,31 +85,33 @@ export const ProjectsContainer = ({
 
   const ControlComponent = () => (
     <div className={controlClass}>
-      <div className="flex gap-4 w-2/3 overflow-auto">
+      <div className={`flex gap-4 w-2/3 overflow-auto`}>
         {/* {types.map((t) => { */}
-        {Object.keys(ProjectTypes).map((t) => {
-          const isActive = activeType === t;
-          const className = classNames({
-            "hover:underline": true,
-            "bg-black text-white": isActive,
-          });
-          return (
-            <Link
-              key={uid()}
-              className={className}
-              href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
-            >
-              {isActive && ">"}
-              {t.toUpperCase()}
-              {/* {isActive &&
+        {Object.keys(ProjectTypes)
+          .filter((p) => (hideTypeFilters ? p === ProjectTypes.All : true))
+          .map((t) => {
+            const isActive = activeType === t;
+            const className = classNames({
+              "hover:underline": true,
+              "bg-black text-white": isActive,
+            });
+            return (
+              <Link
+                key={uid()}
+                className={className}
+                href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
+              >
+                {isActive && ">"}
+                {t.toUpperCase()}
+                {/* {isActive &&
           ` (${
             PROJECTS.filter(
               (e) => e.type === t || activeType === ProjectTypes.All
             ).length
           })`} */}
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
       </div>
       {finalDisplayStyle !== DisplayStyle.None && (
         <div className="flex gap-4">

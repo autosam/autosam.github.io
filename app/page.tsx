@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <>
       <BigHero />
-      <section className="text-[clamp(2rem,12vw,200px)] leading-none flex flex-col justify-center items-center h-screen">
+      <section className="text-[clamp(2rem,12vw,200px)] leading-none flex flex-col justify-center items-center h-screen animate-view">
         <a href="#">
           <h1>MAKE</h1>
           <h1>THINGS</h1>
