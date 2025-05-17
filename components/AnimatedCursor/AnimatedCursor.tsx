@@ -48,7 +48,7 @@ export const AnimatedCursor = () => {
   }, [pathname]);
 
   const className = classNames(
-    "fixed w-9 h-9 bg-white rounded-full pointer-events-none z-50 mix-blend-difference",
+    "fixed w-9 h-9 bg-white rounded-full pointer-events-none z-50 mix-blend-difference max-sm:hidden",
     {
       "!bg-transparent border": isHovering,
     }

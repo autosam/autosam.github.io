@@ -15,9 +15,9 @@ export const Footer = () => {
           SamGames (itch)
         </FooterLink>
         <FooterLink href="https://samandev.itch.io">SamanDev (itch)</FooterLink>
-        <FooterLink href="https://gamejolt.com/@samandev">
+        {/* <FooterLink href="https://gamejolt.com/@samandev">
           SamanDev (gamejolt)
-        </FooterLink>
+        </FooterLink> */}
         <FooterLink href="https://samswebspace.neocities.org/">
           WebSpace
         </FooterLink>

@@ -28,7 +28,7 @@ export const BigHero = ({ ref }: Types) => {
         <Scramble text="MHMDY" />
       </label>
 
-      <div className="absolute flex flex-col select-none pointer-events-none right-0 p-4 max-sm:hidden">
+      <div className="absolute flex flex-col select-none pointer-events-none right-0 p-4 max-md:hidden">
         {new Array(30).fill(0).map((_, i) => (
           <div>
             <label style={{ opacity: Math.abs(i - 30) * 0.005 }}>
@@ -43,31 +43,37 @@ export const BigHero = ({ ref }: Types) => {
           <MusicPlayer />
         </div>
 
-        <div className="flex justify-between w-full p-4 max-sm:flex-col max-sm:gap-8">
-          <div className="flex flex-col justify-start items-start max-sm:items-end">
+        <div className="flex justify-between w-full p-4 max-md:flex-col max-md:gap-8">
+          <div className="flex flex-col justify-start items-start max-md:items-end">
             <span>SMN MHMDY ™</span>
           </div>
           <div className="flex flex-col justify-start items-start">
             <span className="opacity-25">[ DIRECTORY ]</span>
             <Link href="/works" className="hover:underline">
-              {">"}PROJECTS
+              {">"}WORKS
             </Link>
             <div className="text-xs">
               <Projects />
             </div>
             <ExternalLink text="ITCH" href="https://smnmhmdy.itch.io" />
-            <ExternalLink text="GAMEJOLT" href="https://smnmhmdy.itch.io" />
-            <ExternalLink text="SAMEGAMESIO" href="https://smnmhmdy.itch.io" />
-            <ExternalLink text="SAMANDEV" href="https://smnmhmdy.itch.io" />
+            <ExternalLink
+              text="GAMEJOLT"
+              href="https://gamejolt.com/@SmnMhmdy"
+            />
+            <ExternalLink
+              text="SAMEGAMESIO"
+              href="https://samgamesio.itch.io"
+            />
+            <ExternalLink text="SAMANDEV" href="https://samandev.itch.io" />
           </div>
           <div className="-my-4 inline-flex justify-center items-end">
             <img
               data-hover
-              className="w-40 max-sm:w-20"
+              className="w-40 max-md:w-20"
               src="drawing_image_01.png"
             ></img>
           </div>
-          <div className="flex flex-col justify-start items-start max-sm:items-end">
+          <div className="flex flex-col justify-start items-start max-md:items-end">
             <span>WEB DEVELOPER</span>
             <span>GAME DEVELOPER</span>
             <span>PRODUCER</span>
