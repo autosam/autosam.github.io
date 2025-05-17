@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: rgb(255, 255, 255);
   color: rgb(15, 15, 15);
@@ -18,16 +22,26 @@ body {
 
 *::-webkit-scrollbar-thumb {
   background-color: rgb(226, 226, 226);
+  transition: all 1s;
 }
 
-::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background-color: rgb(170, 170, 170);
+  transition: all 1s;
+}
+
+body.scroll-black::-webkit-scrollbar-track {
+  background: black !important;
+}
+
+body.scroll-black::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 
 .projects__container {
   width: 100%;
   margin: 0 auto;
-  columns: 4 300px;
+  columns: 5 300px;
   column-gap: 1em;
 }
 
@@ -67,3 +81,73 @@ body {
     text-wrap: balance;
   }
 } */
+
+.animate-noise {
+  animation: noise 1s infinite step-end;
+}
+
+@keyframes noise {
+  0% {
+    background-position: 0 0;
+  }
+
+  10% {
+    background-position: 2px 50px;
+  }
+
+  20% {
+    background-position: -90px 85px;
+  }
+
+  30% {
+    background-position: -50px 0;
+  }
+
+  40% {
+    background-position: -20px 50px;
+  }
+
+  50% {
+    background-position: -10px 0;
+  }
+
+  60% {
+    background-position: -30px 50px;
+  }
+
+  70% {
+    background-position: -50px 0;
+  }
+
+  80% {
+    background-position: -70px 50px;
+  }
+
+  90% {
+    background-position: -90px 0;
+  }
+
+  100% {
+    background-position: -100px 50px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-view {
+  opacity: 0;
+  animation: fadeIn linear forwards;
+  animation-timeline: view();
+  animation-range: cover cover 400px;
+  /* animation-range: entry-crossing; */
+}

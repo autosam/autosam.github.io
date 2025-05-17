@@ -12,16 +12,20 @@ import { ProjectTypes } from "@/constants/project.consts";
 import { Scramble } from "../Scramble";
 import { PROJECTS_DISPLAY_STYLE } from "@/constants/localStorageKeys";
 import { AnimatedLoading } from "../AnimatedLoading";
+import { ProjectsDisplayStyle as DisplayStyle } from "@/types/ProjectsDisplayStyle";
 
 const TYPE_QUERY_PARAM_KEY = "type";
 
-enum DisplayStyle {
-  None,
-  Grid,
-  Row,
-}
-
-export const ProjectsContainer = () => {
+type Props = {
+  hideFilters?: boolean;
+  hideTypeFilters?: boolean;
+  displayStyleOverride?: DisplayStyle;
+};
+export const ProjectsContainer = ({
+  hideFilters,
+  hideTypeFilters,
+  displayStyleOverride,
+}: Props) => {
   const searchParams = useSearchParams();
 
   const queryType = searchParams.get(TYPE_QUERY_PARAM_KEY) ?? "";
@@ -57,9 +61,11 @@ export const ProjectsContainer = () => {
     return !types.includes(type) && types.push(type);
   }); */
 
+  const finalDisplayStyle = displayStyleOverride ?? displayStyle;
+
   const containerClass = classNames({
     // "flex gap-2 flex-wrap items-start": displayStyle === DisplayStyle.Grid,
-    projects__container: displayStyle === DisplayStyle.Grid,
+    projects__container: finalDisplayStyle === DisplayStyle.Grid,
   });
 
   const filteredProjects = useMemo(
@@ -70,39 +76,48 @@ export const ProjectsContainer = () => {
     [activeType]
   );
 
+  const controlClass = classNames(
+    "flex justify-between mb-4 border-b border-black",
+    {
+      hidden: hideFilters,
+    }
+  );
+
   const ControlComponent = () => (
-    <div className="flex justify-between mb-4 border-b border-black">
-      <div className="flex gap-4 w-2/3 overflow-auto">
+    <div className={controlClass}>
+      <div className={`flex gap-4 w-2/3 overflow-auto`}>
         {/* {types.map((t) => { */}
-        {Object.keys(ProjectTypes).map((t) => {
-          const isActive = activeType === t;
-          const className = classNames({
-            "hover:underline": true,
-            "bg-black text-white": isActive,
-          });
-          return (
-            <Link
-              key={uid()}
-              className={className}
-              href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
-            >
-              {isActive && ">"}
-              {t.toUpperCase()}
-              {/* {isActive &&
+        {Object.keys(ProjectTypes)
+          .filter((p) => (hideTypeFilters ? p === ProjectTypes.All : true))
+          .map((t) => {
+            const isActive = activeType === t;
+            const className = classNames({
+              "hover:underline": true,
+              "bg-black text-white": isActive,
+            });
+            return (
+              <Link
+                key={uid()}
+                className={className}
+                href={`?${TYPE_QUERY_PARAM_KEY}=${t.toLowerCase()}`}
+              >
+                {isActive && ">"}
+                {t.toUpperCase()}
+                {/* {isActive &&
           ` (${
             PROJECTS.filter(
               (e) => e.type === t || activeType === ProjectTypes.All
             ).length
           })`} */}
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
       </div>
-      {displayStyle !== DisplayStyle.None && (
+      {finalDisplayStyle !== DisplayStyle.None && (
         <div className="flex gap-4">
           <button
             className={`hover:underline ${
-              displayStyle === DisplayStyle.Grid && "bg-black text-white"
+              finalDisplayStyle === DisplayStyle.Grid && "bg-black text-white"
             }`}
             onClick={() => setDisplayStyle(DisplayStyle.Grid)}
           >
@@ -110,7 +125,7 @@ export const ProjectsContainer = () => {
           </button>
           <button
             className={`hover:underline ${
-              displayStyle === DisplayStyle.Row && "bg-black text-white"
+              finalDisplayStyle === DisplayStyle.Row && "bg-black text-white"
             }`}
             onClick={() => setDisplayStyle(DisplayStyle.Row)}
           >
@@ -121,7 +136,7 @@ export const ProjectsContainer = () => {
     </div>
   );
 
-  if (displayStyle === DisplayStyle.None)
+  if (finalDisplayStyle === DisplayStyle.None)
     return (
       <>
         <ControlComponent />
@@ -135,7 +150,7 @@ export const ProjectsContainer = () => {
       <div className={containerClass}>
         {filteredProjects.length ? (
           filteredProjects.map((p) =>
-            displayStyle === DisplayStyle.Grid ? (
+            finalDisplayStyle === DisplayStyle.Grid ? (
               <ProjectCard key={p.id} {...p} />
             ) : (
               <ProjectRow key={p.id} {...p} />

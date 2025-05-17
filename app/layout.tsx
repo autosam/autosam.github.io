@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Suspense } from "react";
+import { AnimatedCursor } from "@/components/AnimatedCursor";
 
 const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <AnimatedCursor />
         <div className="flex flex-col min-h-screen">
           <Header />
 
@@ -43,7 +45,7 @@ export default function RootLayout({
             activeClasses="font-bold"
             listClasses="hover:underline"
           />
-          <div className="p-4">{children}</div>
+          <div>{children}</div>
           <Footer />
           <GoogleAnalytics gaId="G-1THW58E0S2" />
         </div>
