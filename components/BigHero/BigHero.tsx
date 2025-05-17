@@ -4,13 +4,9 @@ import { useAtom } from "jotai";
 import { headerVisibilityAtom } from "@/store";
 import classNames from "classnames";
 import { PROJECTS } from "@/constants/projects";
-import { useEffect } from "react";
 import { MusicPlayer } from "../MusicPlayer";
 
-type Types = {
-  ref: React.RefObject<HTMLDivElement>;
-};
-export const BigHero = ({ ref }: Types) => {
+export const BigHero = () => {
   const [isVisible] = useAtom(headerVisibilityAtom);
 
   const className = classNames(
@@ -22,7 +18,7 @@ export const BigHero = ({ ref }: Types) => {
   );
 
   return (
-    <div ref={ref} className={className}>
+    <div className={className}>
       <label className="absolute flex flex-col text-[300px] leading-[260px] font-extrabold select-none opacity-15 pointer-events-none">
         <Scramble text="SMN" />
         <Scramble text="MHMDY" />
@@ -40,9 +36,19 @@ export const BigHero = ({ ref }: Types) => {
 
       <div className="w-full h-full flex flex-col items-center text-center text-xl justify-between">
         <div className="flex w-full justify-between p-4">
-          <div className="md:w-2/4 flex justify-start opacity-50">
-            <label className="text-6xl">
-              <img alt="Null" className="w-10" src="images/null_symbol.png" />
+          <div className="md:w-2/4 flex justify-start">
+            <label className="flex flex-col gap-16 justify-between">
+              <img
+                alt="Null icon"
+                className="w-10 opacity-50"
+                src="images/null_symbol.png"
+              />
+              <Link
+                href="mailto:autosam.sm@gmail.com"
+                className="text-xs bg-white text-black hover:underline cursor-pointer px-2"
+              >
+                {`CONTACT\>`}
+              </Link>
             </label>
           </div>
           <div className="md:w-1/4">
@@ -71,7 +77,10 @@ export const BigHero = ({ ref }: Types) => {
 
           <div className="flex flex-col justify-start items-start md:w-1/4">
             <label className="opacity-25">[ DIRECTORY ]</label>
-            <Link href="/works" className="hover:underline">
+            <Link
+              href="/works"
+              className="bg-white text-black px-2 hover:underline hover:pl-8 transition-[padding] duration-200"
+            >
               {">"}WORKS
             </Link>
             <div className="text-xs">
@@ -94,6 +103,7 @@ export const BigHero = ({ ref }: Types) => {
               data-hover
               className="w-40 max-md:w-20"
               src="drawing_image_01.png"
+              alt="SMN MHMDY"
             />
           </div>
 
@@ -121,7 +131,11 @@ const ExternalLink = ({ text, href }: { text: string; href: string }) => {
       className="hover:underline inline-flex gap-2 items-center"
     >
       {text}
-      <img src="/external_link_01.png" className="w-2 inline-block" />
+      <img
+        alt="External"
+        src="/external_link_01.png"
+        className="w-2 inline-block"
+      />
     </Link>
   );
 };
@@ -131,8 +145,8 @@ const Projects = () => {
     <>
       {PROJECTS.map((project) => (
         <Link
-          href={`works/${project.id}`}
           key={project.id}
+          href={`works/${project.id}`}
           className="hover:underline"
         >
           <div className="flex">

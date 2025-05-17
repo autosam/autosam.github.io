@@ -12,20 +12,15 @@ import { useAtom } from "jotai";
 import { Suspense, useEffect, useRef } from "react";
 
 export default function Page() {
-  const [isHeaderVisible, setIsHeaderVisible] = useAtom(headerVisibilityAtom);
+  const [_, setIsHeaderVisible] = useAtom(headerVisibilityAtom);
 
   const bigHeroRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setIsHeaderVisible(false);
 
     const handleScroll = () => {
-      const bigHero = bigHeroRef.current;
-      const bigHeroHeight = bigHero
-        ? bigHero.getBoundingClientRect().height
-        : 0;
-
       const scrollY = window.scrollY;
-      setIsHeaderVisible(scrollY > bigHeroHeight);
+      setIsHeaderVisible(scrollY > 0);
     };
     handleScroll();
 
@@ -37,7 +32,7 @@ export default function Page() {
 
   return (
     <>
-      <BigHero ref={bigHeroRef} />
+      <BigHero />
       <section className="text-[clamp(2rem,12vw,200px)] leading-none flex flex-col justify-center items-center h-screen">
         <a href="#">
           <h1>MAKE</h1>

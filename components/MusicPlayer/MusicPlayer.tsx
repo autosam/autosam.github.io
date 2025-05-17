@@ -30,11 +30,13 @@ export const MusicPlayer = () => {
         className="relative inline-flex text-xs border-t border-white p-3 bg-black bg-opacity-50 gap-3 z-10 items-center overflow-hidden justify-end transition-all hover:px-4 hover:underline"
       >
         <img
+          alt="Album cover"
           className="w-14 rounded mask-[url(images/play_mask.png)] mask-cover mask-size-[100%]"
           src="images/album_cover_01.jpg"
         />
         <div className="flex flex-col items-start uppercase">
           <img
+            alt="Headphones icon"
             className="w-4 invert opacity-50"
             src="images/headphones_icon_02.png"
           />
