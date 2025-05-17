@@ -23,7 +23,7 @@ export const MusicPlayer = () => {
   }, [barStrength]);
 
   return (
-    <Link target="_blank" href={MUSIC.href}>
+    <Link className="h-fit" target="_blank" href={MUSIC.href}>
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}

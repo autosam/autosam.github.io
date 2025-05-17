@@ -4,6 +4,8 @@ import { AnimatedLoading } from "@/components/AnimatedLoading";
 import { BigHero } from "@/components/BigHero";
 import { Hero } from "@/components/Hero";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
+import { ProjectSection } from "@/components/ProjectSection";
+import { PROJECTS } from "@/constants/projects";
 import { headerVisibilityAtom } from "@/store";
 import { ProjectsDisplayStyle } from "@/types/ProjectsDisplayStyle";
 import { useAtom } from "jotai";
@@ -36,14 +38,19 @@ export default function Page() {
   return (
     <>
       <BigHero ref={bigHeroRef} />
+      <section className="text-[12vw] leading-none flex flex-col justify-center items-center h-screen">
+        <a href="#">
+          <h1>MAKE</h1>
+          <h1>THINGS</h1>
+          <h1 className="font-extrabold">HAPPEN.</h1>
+        </a>
+      </section>
+      <section>
+        {PROJECTS.map((p, i) => (
+          <ProjectSection sectionNumber={i} project={p} />
+        ))}
+      </section>
       <div className="text-xs p-4">
-        <section className="text-[12vw] leading-none flex flex-col justify-center items-center h-screen">
-          <a href="#">
-            <h1>MAKE</h1>
-            <h1>THINGS</h1>
-            <h1 className="font-extrabold">HAPPEN.</h1>
-          </a>
-        </section>
         <div className="my-4">
           <Hero />
         </div>

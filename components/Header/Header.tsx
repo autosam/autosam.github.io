@@ -20,7 +20,7 @@ export const Header = () => {
   }, [pathname, setIsHeaderVisible]);
 
   const className = classNames(
-    "bg-white px-4 text-sm sticky top-0 left-0 w-full flex justify-start items-center z-40 __header [&>*]:w-25% transition-all duration-500",
+    "bg-whitee mix-blend-difference text-white px-4 text-sm sticky top-0 left-0 w-full flex justify-start items-center z-40 __header [&>*]:w-25% transition-all duration-500",
     {
       "h-0 overflow-hidden opacity-0 duration-200 pointer-events-none":
         !isVisible,
@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <div className={className}>
       <Link href="/" className="flex items-center gap-3">
-        <img className="h-10" src="/logo2.png" />
+        <img className="h-10 invert" src="/logo2.png" />
         <div className="font-bold flex flex-col">
           <div className="h-3">
             <Scramble delay={1000 + Math.random() * 8000} text="SMN MHMDY" />
