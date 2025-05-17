@@ -7,7 +7,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Suspense } from "react";
 import { AnimatedCursor } from "@/components/AnimatedCursor";
-import { AnimatedPathLoading } from "@/components/AnimatedPathLoading";
 
 const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 

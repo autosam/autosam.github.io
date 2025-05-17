@@ -19,6 +19,11 @@ export const Header = () => {
     }
   }, [pathname, setIsHeaderVisible]);
 
+  useEffect(() => {
+    if (isVisible) document.body.classList.remove("scroll-black");
+    else document.body.classList.add("scroll-black");
+  }, [isVisible]);
+
   const className = classNames(
     "bg-whitee mix-blend-difference text-white px-4 text-sm sticky top-0 left-0 w-full flex justify-start items-center z-40 __header [&>*]:w-25% transition-all duration-500",
     {

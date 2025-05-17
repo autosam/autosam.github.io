@@ -40,30 +40,36 @@ export const BigHero = ({ ref }: Types) => {
 
       <div className="w-full h-full flex flex-col items-center text-center text-xl justify-between">
         <div className="flex w-full justify-between p-4">
-          <div className="w-2/4 flex justify-start opacity-50">
-            {/* <label className="text-8xl leading-8">⌕</label> */}
-            <label className="text-6xl">∅</label>
+          <div className="md:w-2/4 flex justify-start opacity-50">
+            <label className="text-6xl">
+              <img alt="Null" className="w-10" src="images/null_symbol.png" />
+            </label>
           </div>
-          <div className="w-1/4">
+          <div className="md:w-1/4">
             <div className="inline-flex justify-center">
-              <span className="text-6xl text-left uppercase opacity-20">
-                {/* Aradvi Sura An ahita */}
-                <img className="w-24" src="images/diskdistrikt.png" />
+              <span className="text-6xl text-left uppercase opacity-20 max-md:hidden">
+                <img
+                  alt="Disk Distrikt"
+                  className="w-24"
+                  src="images/diskdistrikt.png"
+                />
               </span>
             </div>
           </div>
-          <div className="w-1/4 flex justify-end">
+          <div className="md:w-1/4 flex justify-end">
             <MusicPlayer />
           </div>
         </div>
 
         <div className="flex justify-between w-full p-4 max-md:flex-col max-md:gap-8">
-          <div className="flex flex-col justify-between items-start max-md:items-end w-1/4">
+          <div className="flex flex-col justify-between items-start max-md:items-start md:w-1/4">
             <label>SMN MHMDY ™</label>
-            {!isVisible && <label className="text-4xl opacity-50">↓</label>}
+            {!isVisible && (
+              <label className="text-4xl opacity-50 max-md:hidden">↓</label>
+            )}
           </div>
 
-          <div className="flex flex-col justify-start items-start w-1/4">
+          <div className="flex flex-col justify-start items-start md:w-1/4">
             <label className="opacity-25">[ DIRECTORY ]</label>
             <Link href="/works" className="hover:underline">
               {">"}WORKS
@@ -83,15 +89,15 @@ export const BigHero = ({ ref }: Types) => {
             <ExternalLink text="SAMANDEV" href="https://samandev.itch.io" />
           </div>
 
-          <div className="-my-4 inline-flex justify-center items-end w-1/4">
+          <div className="-my-4 inline-flex justify-center items-end md:w-1/4">
             <img
               data-hover
               className="w-40 max-md:w-20"
               src="drawing_image_01.png"
-            ></img>
+            />
           </div>
 
-          <div className="flex flex-col justify-end items-end max-md:items-end w-1/4">
+          <div className="flex flex-col justify-end items-end max-md:items-end md:w-1/4">
             <label>WEB DEVELOPER</label>
             <label>GAME DEVELOPER</label>
             <label>PRODUCER</label>

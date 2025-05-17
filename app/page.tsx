@@ -38,18 +38,18 @@ export default function Page() {
   return (
     <>
       <BigHero ref={bigHeroRef} />
-      <section className="text-[12vw] leading-none flex flex-col justify-center items-center h-screen">
+      <section className="text-[clamp(2rem,12vw,200px)] leading-none flex flex-col justify-center items-center h-screen">
         <a href="#">
           <h1>MAKE</h1>
           <h1>THINGS</h1>
           <h1 className="font-extrabold">HAPPEN.</h1>
         </a>
       </section>
-      <section>
+      {/* <section>
         {PROJECTS.map((p, i) => (
           <ProjectSection sectionNumber={i} project={p} />
         ))}
-      </section>
+      </section> */}
       <div className="text-xs p-4">
         <div className="my-4">
           <Hero />
