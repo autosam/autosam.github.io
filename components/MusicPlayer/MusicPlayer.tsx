@@ -3,19 +3,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const BARS_AMOUNT = 40,
-  BARS_STRENGTH = 40;
+  BARS_STRENGTH = 30;
 export const MusicPlayer = () => {
   const [barHeights, setBarHeights] = useState(new Array(BARS_AMOUNT).fill(0));
-  const [isHovering, setIsHovering] = useState(false);
   const [barStrength, setBarStrength] = useState(BARS_STRENGTH);
 
-  const onMouseEnter = () => setIsHovering(true);
-  const onMouseLeave = () => setIsHovering(false);
-
-  useEffect(
-    () => (isHovering ? setBarStrength(500) : setBarStrength(BARS_STRENGTH)),
-    [isHovering]
-  );
+  const onMouseEnter = () => setBarStrength(100);
+  const onMouseLeave = () => setBarStrength(BARS_STRENGTH);
 
   useEffect(() => {
     const adjustBarHeights = () => {
@@ -33,7 +27,7 @@ export const MusicPlayer = () => {
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className="relative flex text-xs border border-white rounded-md p-3 bg-black bg-opacity-50 gap-3 z-10 items-center overflow-hidden justify-end transition-all hover:px-4 hover:underline"
+        className="relative inline-flex text-xs border-t border-white p-3 bg-black bg-opacity-50 gap-3 z-10 items-center overflow-hidden justify-end transition-all hover:px-4 hover:underline"
       >
         <img
           className="w-14 rounded mask-[url(images/play_mask.png)] mask-cover mask-size-[100%]"
@@ -56,7 +50,7 @@ export const MusicPlayer = () => {
                 height: `${height + 1}px`,
                 // opacity: height / BARS_STRENGTH,
               }}
-              className="w-2 bg-gradient-to-b from-white flex-grow transition-all ease-linear duration-100 mix-blend-difference"
+              className="w-2 bg-gradient-to-b from-white border border-black flex-grow transition-all ease-linear duration-100 mix-blend-difference"
             />
           ))}
         </div>

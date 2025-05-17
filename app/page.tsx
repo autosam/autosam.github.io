@@ -44,11 +44,9 @@ export default function Page() {
             <h1 className="font-extrabold">HAPPEN.</h1>
           </a>
         </section>
-        <div className="my-8">
+        <div className="my-4">
           <Hero />
         </div>
-        <div className="my-8" />
-        {/* <div className="mt-96" /> */}
         <Suspense fallback={<AnimatedLoading />}>
           <ProjectsContainer
             hideFilters

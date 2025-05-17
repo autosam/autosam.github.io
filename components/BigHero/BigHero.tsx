@@ -39,16 +39,32 @@ export const BigHero = ({ ref }: Types) => {
       </div>
 
       <div className="w-full h-full flex flex-col items-center text-center text-xl justify-between">
-        <div className="flex w-full justify-end p-4">
-          <MusicPlayer />
+        <div className="flex w-full justify-between p-4">
+          <div className="w-2/4 flex justify-start opacity-50">
+            {/* <label className="text-8xl leading-8">⌕</label> */}
+            <label className="text-6xl">∅</label>
+          </div>
+          <div className="w-1/4">
+            <div className="inline-flex justify-center">
+              <span className="text-6xl text-left uppercase opacity-20">
+                {/* Aradvi Sura An ahita */}
+                <img className="w-24" src="images/diskdistrikt.png" />
+              </span>
+            </div>
+          </div>
+          <div className="w-1/4 flex justify-end">
+            <MusicPlayer />
+          </div>
         </div>
 
         <div className="flex justify-between w-full p-4 max-md:flex-col max-md:gap-8">
-          <div className="flex flex-col justify-start items-start max-md:items-end">
-            <span>SMN MHMDY ™</span>
+          <div className="flex flex-col justify-between items-start max-md:items-end w-1/4">
+            <label>SMN MHMDY ™</label>
+            {!isVisible && <label className="text-4xl opacity-50">↓</label>}
           </div>
-          <div className="flex flex-col justify-start items-start">
-            <span className="opacity-25">[ DIRECTORY ]</span>
+
+          <div className="flex flex-col justify-start items-start w-1/4">
+            <label className="opacity-25">[ DIRECTORY ]</label>
             <Link href="/works" className="hover:underline">
               {">"}WORKS
             </Link>
@@ -66,20 +82,24 @@ export const BigHero = ({ ref }: Types) => {
             />
             <ExternalLink text="SAMANDEV" href="https://samandev.itch.io" />
           </div>
-          <div className="-my-4 inline-flex justify-center items-end">
+
+          <div className="-my-4 inline-flex justify-center items-end w-1/4">
             <img
               data-hover
               className="w-40 max-md:w-20"
               src="drawing_image_01.png"
             ></img>
           </div>
-          <div className="flex flex-col justify-start items-start max-md:items-end">
-            <span>WEB DEVELOPER</span>
-            <span>GAME DEVELOPER</span>
-            <span>PRODUCER</span>
+
+          <div className="flex flex-col justify-end items-end max-md:items-end w-1/4">
+            <label>WEB DEVELOPER</label>
+            <label>GAME DEVELOPER</label>
+            <label>PRODUCER</label>
             <br />
-            <span>24 YEARS OLD</span>
-            <i className="opacity-25 text-xs">FOREVER PERSIAN GULF</i>
+            <label>24YRS</label>
+            <label>
+              <i className="opacity-25 text-xs">FOREVER PERSIAN GULF</i>
+            </label>
           </div>
         </div>
       </div>
