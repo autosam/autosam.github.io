@@ -3,6 +3,7 @@
 import { AnimatedLoading } from "@/components/AnimatedLoading";
 import { BigHero } from "@/components/BigHero";
 import { Hero } from "@/components/Hero";
+import { HeroText } from "@/components/HeroText";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
 import { ProjectSection } from "@/components/ProjectSection";
 import { PROJECTS } from "@/constants/projects";
@@ -33,18 +34,12 @@ export default function Page() {
   return (
     <>
       <BigHero />
-      <section className="text-[clamp(2rem,12vw,200px)] leading-none flex flex-col justify-center items-center h-screen animate-view">
-        <a href="#">
-          <h1>MAKE</h1>
-          <h1>THINGS</h1>
-          <h1 className="font-extrabold">HAPPEN.</h1>
-        </a>
-      </section>
-      {/* <section>
+      <HeroText />
+      <section>
         {PROJECTS.map((p, i) => (
           <ProjectSection sectionNumber={i} project={p} />
         ))}
-      </section> */}
+      </section>
       <div className="text-xs p-4">
         <div className="my-4">
           <Hero />
