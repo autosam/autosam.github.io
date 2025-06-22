@@ -1,5 +1,5 @@
 export const MUSIC = {
-  artist: "Noga Erez",
-  title: "POLICE",
-  href: "https://www.youtube.com/playlist?list=PL1JjhfsWpep7JibhsD98XKAJpU2x4E0vs",
+  artist: "jixwang, VISION SOUND",
+  title: "Dancing Through Fantasies",
+  href: "https://open.spotify.com/album/0da6BSYSm4CwKozvjRw7c2",
 };
