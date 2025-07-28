@@ -2,6 +2,6 @@ export const EXACT_BIRTHDAY = {
   year: 2000,
   month: 7,
   day: 29,
-  hour: 13,
+  hour: 1,
   minute: 0,
 };
