@@ -1,1 +1,2 @@
-export * from './scrambleLetters'
+export * from "./scrambleLetters";
+export * from "./getExactAge";

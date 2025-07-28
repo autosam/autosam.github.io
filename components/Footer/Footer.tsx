@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Scramble } from "../Scramble";
+import { EXACT_BIRTHDAY } from "@/constants/common";
+import { getExactAge } from "@/utils";
 
 export const Footer = () => {
   return (
@@ -26,7 +28,11 @@ export const Footer = () => {
       <hr className="border-black opacity-5" />
       <br />
       <div>
-        <Scramble text="Programmer // Web Developer // Game Developer // Persian // 24YRS" />
+        <Scramble
+          text={`Programmer // Web Developer // Game Developer // Persian // ${
+            getExactAge(EXACT_BIRTHDAY).years
+          }YRS`}
+        />
       </div>
       <br />
       <Scramble text="© 2025" />

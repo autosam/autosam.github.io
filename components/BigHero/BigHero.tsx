@@ -5,6 +5,7 @@ import { headerVisibilityAtom } from "@/store";
 import classNames from "classnames";
 import { PROJECTS } from "@/constants/projects";
 import { MusicPlayer } from "../MusicPlayer";
+import { Age } from "../Age";
 
 export const BigHero = () => {
   const [isVisible] = useAtom(headerVisibilityAtom);
@@ -112,7 +113,9 @@ export const BigHero = () => {
             <label>GAME DEVELOPER</label>
             <label>PRODUCER</label>
             <br />
-            <label>24YRS</label>
+            <label>
+              <Age />
+            </label>
             <label>
               <i className="opacity-25 text-xs">FOREVER PERSIAN GULF</i>
             </label>
