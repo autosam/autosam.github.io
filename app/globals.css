@@ -151,3 +151,20 @@ body {
   animation-range: cover cover 400px;
   /* animation-range: entry-crossing; */
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.blink-opacity {
+  animation: blinkOpacity infinite 1s;
+  transition: animation;
+}
+
+@keyframes blinkOpacity {
+  90% {
+    opacity: 0.65;
+    filter: drop-shadow(-10px 0px 0 #7a7a7a) drop-shadow(-20px 0px 0 #2c2c2c)
+  }
+}

@@ -8,16 +8,15 @@ export const MusicPlayer = () => {
   const [barHeights, setBarHeights] = useState(new Array(BARS_AMOUNT).fill(0));
   const [barStrength, setBarStrength] = useState(BARS_STRENGTH);
 
+  const adjustBarHeights = () => {
+    setBarHeights((heights) => heights.map(() => Math.random() * barStrength));
+  };
   const onMouseEnter = () => setBarStrength(100);
   const onMouseLeave = () => setBarStrength(BARS_STRENGTH);
 
-  useEffect(() => {
-    const adjustBarHeights = () => {
-      setBarHeights((heights) =>
-        heights.map(() => Math.random() * barStrength)
-      );
-    };
+  useEffect(adjustBarHeights, [barStrength]);
 
+  useEffect(() => {
     const interval = setInterval(adjustBarHeights, 150);
     return () => clearInterval(interval);
   }, [barStrength]);

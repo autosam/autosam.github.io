@@ -8,7 +8,6 @@ import {
 import smFirstpersonController from "./projects/smFirstpersonController";
 
 export const PROJECTS: ProjectProps[] = [
-  smFirstpersonController,
   {
     title: "Tamaweb",
     img: "/projects/tamaweb.png",
@@ -28,6 +27,7 @@ export const PROJECTS: ProjectProps[] = [
       Whether it’s feeding, cleaning, or playing fun games, every choice you make shapes their life and happiness.
       From heartfelt interactions to exciting new features, there’s always something to discover.`,
   },
+  smFirstpersonController,
   {
     title: "The Wall Project",
     img: "/projects/thewall.png",

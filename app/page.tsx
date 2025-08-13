@@ -4,8 +4,6 @@ import { AnimatedLoading } from "@/components/AnimatedLoading";
 import { BigHero } from "@/components/BigHero";
 import { Hero } from "@/components/Hero";
 import { ProjectsContainer } from "@/components/ProjectsContainer";
-import { ProjectSection } from "@/components/ProjectSection";
-import { PROJECTS } from "@/constants/projects";
 import { headerVisibilityAtom } from "@/store";
 import { ProjectsDisplayStyle } from "@/types/ProjectsDisplayStyle";
 import { useAtom } from "jotai";

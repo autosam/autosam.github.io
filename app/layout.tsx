@@ -5,8 +5,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Suspense } from "react";
 import { AnimatedCursor } from "@/components/AnimatedCursor";
+import { FullscreenLoading } from "@/components/FullscreenLoading";
 
 const font = Tomorrow({ weight: "400", subsets: ["latin"] });
 
@@ -37,6 +37,7 @@ export default function RootLayout({
         <AnimatedCursor />
         <div className="flex flex-col min-h-screen">
           <Header />
+          {/* <FullscreenLoading /> */}
 
           <Breadcrumb
             homeElement={<div>INDEX</div>}
