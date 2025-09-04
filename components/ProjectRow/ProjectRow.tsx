@@ -7,8 +7,6 @@ import { ProjectProps, ProjectStatuses } from "@/constants/project.consts";
 export const ProjectRow = (props: ProjectProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
   const rowClass = classNames(
     "py-2 border-b border-black flex project-row h-8 cursor-pointer items-center relative [&>*]:w-1/2 overflow-hidden",
     {
@@ -78,7 +76,7 @@ export const ProjectRow = (props: ProjectProps) => {
             {status === ProjectStatuses.Ongoing ? <i> - NOW</i> : ""}
           </div>
           <div>{type?.toUpperCase()}</div>
-          {!isMobile && <div>{status.toUpperCase()}</div>}
+          <div className="max-sm:hidden">{status.toUpperCase()}</div>
           <button className="hover:underline max-w-fit bg-black text-white px-2">
             {"VIEW \\>"}
           </button>
@@ -123,7 +121,7 @@ const RowFloatingImage = ({
         left: position.x,
         opacity: visible ? 1 : 0,
       }}
-      className="fixed top-0 left-0 z-10 pointer-events-none transition-opacity border border-black"
+      className="fixed top-0 left-0 z-10 pointer-events-none transition-opacity border border-black max-sm:hidden"
     >
       <img className="w-64" src={url} />
     </div>
