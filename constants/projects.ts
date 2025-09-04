@@ -34,7 +34,7 @@ export const PROJECTS: ProjectProps[] = [
     href: "https://thewallproject.vercel.app",
     type: ProjectTypes.Website,
     releaseDate: 2024,
-    status: ProjectStatuses.Ongoing,
+    status: ProjectStatuses.Done,
     genre: ProjectGenres.Social,
     id: "the-wall-project",
     description: `A platform built on anonymity and freedom of speech. Let the collective conscience decide the validity of an statement.`,

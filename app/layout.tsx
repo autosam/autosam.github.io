@@ -37,7 +37,7 @@ export default function RootLayout({
         <AnimatedCursor />
         <div className="flex flex-col min-h-screen">
           <Header />
-          {/* <FullscreenLoading /> */}
+          <FullscreenLoading />
 
           <Breadcrumb
             homeElement={<div>INDEX</div>}

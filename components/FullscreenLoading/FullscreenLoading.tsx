@@ -4,11 +4,26 @@ import { useEffect, useState } from "react";
 import { AnimatedLoading } from "../AnimatedLoading";
 import classNames from "classnames";
 
-export const FullscreenLoading = () => {
-  const [visible, setVisible] = useState(true);
+type Props = {
+  isVisible?: boolean;
+};
+export const FullscreenLoading = ({ isVisible = true }: Props) => {
+  const [visible, setVisible] = useState(isVisible);
 
   useEffect(() => {
-    setTimeout(() => setVisible(false), 2000);
+    if (document.readyState !== "complete") {
+      const handler = () => {
+        setVisible(false);
+      };
+      window.addEventListener("load", handler);
+
+      return () => window.removeEventListener("load", handler);
+    } else {
+      const timeout = window.setTimeout(() => {
+        setVisible(false);
+      }, 500);
+      return () => window.clearTimeout(timeout);
+    }
   }, []);
 
   useEffect(() => {
@@ -19,9 +34,9 @@ export const FullscreenLoading = () => {
   }, [visible]);
 
   const className = classNames(
-    "flex fixed top-0 left-0 w-screen h-screen justify-center items-center bg-black z-50 transition-all duration-500 text-white",
+    "flex fixed top-0 left-0 w-screen h-screen justify-center items-center bg-black z-50 transition-all duration-1000 text-white",
     {
-      "pointer-events-none -translate-y-full": !visible,
+      "pointer-events-none scale-125 opacity-0": !visible,
     }
   );
 
@@ -31,7 +46,7 @@ export const FullscreenLoading = () => {
       <img
         alt="Disk Distrikt"
         className="w-24 opacity-20 blink-opacity"
-        src="images/diskdistrikt.png"
+        src="/images/diskdistrikt.png"
       />
     </div>
   );

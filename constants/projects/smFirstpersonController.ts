@@ -45,7 +45,7 @@ export default <ProjectProps>{
   img: "/projects/smFirstpersonController.png",
   type: ProjectTypes.Behavior,
   releaseDate: 2024,
-  status: ProjectStatuses.Ongoing,
+  status: ProjectStatuses.Done,
   id: "sm-firstperson-controller",
   description: description,
   engine: "CopperCube",

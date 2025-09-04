@@ -2,10 +2,12 @@ import Link from "next/link";
 import { Scramble } from "../Scramble";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
-import { ProjectProps } from "@/constants/project.consts";
+import { ProjectProps, ProjectStatuses } from "@/constants/project.consts";
 
 export const ProjectRow = (props: ProjectProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   const rowClass = classNames(
     "py-2 border-b border-black flex project-row h-8 cursor-pointer items-center relative [&>*]:w-1/2 overflow-hidden",
@@ -71,9 +73,12 @@ export const ProjectRow = (props: ProjectProps) => {
               text={title.toUpperCase()}
             />
           </div>
-          <div>{releaseDate}</div>
+          <div>
+            {releaseDate}
+            {status === ProjectStatuses.Ongoing ? <i> - NOW</i> : ""}
+          </div>
           <div>{type?.toUpperCase()}</div>
-          <div>{status.toUpperCase()}</div>
+          {!isMobile && <div>{status.toUpperCase()}</div>}
           <button className="hover:underline max-w-fit bg-black text-white px-2">
             {"VIEW \\>"}
           </button>
@@ -98,9 +103,11 @@ const RowFloatingImage = ({
 
   useEffect(() => {
     const onMouseEvent = (e) => {
+      let positionX = e.clientX - 128;
+      if (positionX < 0) positionX = 0;
       setPosition({
-        x: e.clientX + 16,
-        y: e.clientY + 16,
+        x: positionX,
+        y: e.clientY + 32,
       });
     };
     window.addEventListener("mousemove", onMouseEvent);
@@ -116,7 +123,7 @@ const RowFloatingImage = ({
         left: position.x,
         opacity: visible ? 1 : 0,
       }}
-      className="fixed top-0 left-0 z-10 pointer-events-none transition-opacity"
+      className="fixed top-0 left-0 z-10 pointer-events-none transition-opacity border border-black"
     >
       <img className="w-64" src={url} />
     </div>

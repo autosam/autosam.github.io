@@ -20,7 +20,7 @@ export const BigHero = () => {
 
   return (
     <div className={className}>
-      <label className="absolute flex flex-col text-[300px] leading-[260px] font-extrabold select-none opacity-15 pointer-events-none">
+      <label className="absolute flex flex-col text-[300px] leading-[260px] font-extrabold select-none opacity-15 pointer-events-none whitespace-nowrap">
         <Scramble text="SMN" />
         <Scramble text="MHMDY" />
       </label>
