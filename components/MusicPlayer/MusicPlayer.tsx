@@ -21,17 +21,24 @@ export const MusicPlayer = () => {
     return () => clearInterval(interval);
   }, [barStrength]);
 
+  const isHovering = barStrength === 100;
+
   return (
     <Link className="h-fit" target="_blank" href={MUSIC.href}>
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        className="relative inline-flex text-xs border-t border-white p-3 bg-black bg-opacity-50 gap-3 z-10 items-center overflow-hidden justify-end transition-all hover:px-4 hover:underline"
+        className="relative inline-flex text-xs border-t border-white p-3 bg-black bg-opacity-50 gap-3 z-10 items-center overflow-hidden justify-end transition-all hover:px-4 hover:underline group/player"
       >
         <img
           alt="Album cover"
-          className="w-14 rounded mask-[url(images/play_mask.png)] mask-cover mask-size-[100%]"
+          className="w-14 rounded mask-cover mask-size-[100%] transition-transform"
           src="images/album_cover_01.jpg"
+          style={{
+            maskSize: '100%',
+            maskImage: isHovering ? 'url(images/play_mask.png)' : '',
+            animation: isHovering ? 'musicPlayerMaskAnimation 1s infinite linear' : '',
+          }}
         />
         <div className="flex flex-col items-start uppercase">
           <img
