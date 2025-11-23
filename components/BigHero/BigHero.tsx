@@ -48,7 +48,7 @@ export const BigHero = () => {
                 href="mailto:autosam.sm@gmail.com"
                 className="text-xs bg-white text-black hover:underline cursor-pointer px-2"
               >
-                {`CONTACT\>`}
+                {`CONTACT \\>`}
               </Link>
             </label>
           </div>
@@ -93,7 +93,7 @@ export const BigHero = () => {
               href="https://gamejolt.com/@SmnMhmdy"
             />
             <ExternalLink
-              text="SAMEGAMESIO"
+              text="SAMGAMESIO"
               href="https://samgamesio.itch.io"
             />
             <ExternalLink text="SAMANDEV" href="https://samandev.itch.io" />
@@ -144,9 +144,10 @@ const ExternalLink = ({ text, href }: { text: string; href: string }) => {
 };
 
 const Projects = () => {
+  const MAX_DISPLAYED_PROJECTS = 8;
   return (
     <>
-      {PROJECTS.map((project) => (
+      {PROJECTS.slice(0, MAX_DISPLAYED_PROJECTS).map((project) => (
         <Link
           key={project.id}
           href={`works/${project.id}`}
@@ -157,6 +158,11 @@ const Projects = () => {
           </div>
         </Link>
       ))}
+      <Link href='works' className="hover:underline">
+          <div className="flex">
+            <span className="ml-12 underlinee">{`VIEW ALL >`}</span>
+          </div>
+      </Link>
     </>
   );
 };
