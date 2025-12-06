@@ -72,7 +72,7 @@ export default async function Page({
           {links.map((link) => (
             <div key={uid()} className="inline-flex">
               <Link
-                className="bg-black text-white px-2 hover:underline"
+                className="bg-black text-white px-2 hover:underline btn-transition-wb"
                 href={link.url}
                 target="_blank"
               >

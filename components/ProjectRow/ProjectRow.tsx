@@ -41,7 +41,7 @@ export const ProjectRow = (props: ProjectProps) => {
   const target = id ? "" : "_blank";
 
   return (
-    <>
+    <div className="contents">
       <Link
         className="hover:underline"
         href={hrefTarget ?? "#"}
@@ -83,7 +83,7 @@ export const ProjectRow = (props: ProjectProps) => {
         </div>
       </Link>
       {img && <RowFloatingImage visible={isExpanded} url={img} />}
-    </>
+    </div>
   );
 };
 

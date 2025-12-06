@@ -6,9 +6,33 @@ import classNames from "classnames";
 import { PROJECTS } from "@/constants/projects";
 import { MusicPlayer } from "../MusicPlayer";
 import { Age } from "../Age";
+import { useEffect, useRef } from "react";
 
 export const BigHero = () => {
+  const contentRef = useRef<HTMLDivElement>(null)
+
   const [isVisible] = useAtom(headerVisibilityAtom);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    const boundingBox = contentRef.current.getBoundingClientRect();
+
+    console.log(boundingBox)
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const movementVector = {
+        x: (event.clientX * 0.1) + (boundingBox.width / 2),
+        y: (event.clientY * 0.1) + (boundingBox.height / 2)
+      }
+
+      if (contentRef.current) {
+        contentRef.current.style.transform = `rotateY(${movementVector.x}deg) rotateX(-${movementVector.y}deg)`
+      }
+    }
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [contentRef])
 
   const className = classNames(
     "w-full h-screen bg-black text-white relative overflow-hidden transition-all duration-500 bg-[url('/noise_01.png')] bg-center bg-repeat",
@@ -25,7 +49,7 @@ export const BigHero = () => {
         <Scramble text="MHMDY" />
       </label>
 
-      <div className="absolute flex flex-col select-none pointer-events-none right-0 p-4 max-md:hidden">
+      <div className="absolute flex flex-col select-none pointer-events-none right-0 p-4 max-md:hidden stagger-container fade-l-r-bounce">
         {new Array(30).fill(0).map((_, i) => (
           <div>
             <label style={{ opacity: Math.abs(i - 30) * 0.005 }}>
@@ -35,7 +59,7 @@ export const BigHero = () => {
         ))}
       </div>
 
-      <div className="w-full h-full flex flex-col items-center text-center text-xl justify-between">
+      <div ref={contentRef} className="w-full h-full flex flex-col items-center text-center text-xl justify-between stagger-container">
         <div className="flex w-full justify-between p-4">
           <div className="md:w-2/4 flex justify-start">
             <label className="flex flex-col gap-16 justify-between">
@@ -46,7 +70,7 @@ export const BigHero = () => {
               />
               <Link
                 href="mailto:autosam.sm@gmail.com"
-                className="text-xs bg-white text-black hover:underline cursor-pointer px-2"
+                className="text-xs bg-white text-black hover:underline cursor-pointer px-2 btn-transition-wb"
               >
                 {`CONTACT \\>`}
               </Link>
@@ -69,22 +93,22 @@ export const BigHero = () => {
         </div>
 
         <div className="flex justify-between w-full p-4 max-md:flex-col max-md:gap-8">
-          <div className="flex flex-col justify-between items-start max-md:items-start md:w-1/4">
+          <div className="flex flex-col justify-between items-start max-md:items-start md:w-1/4 stagger-container">
             <label>SMN MHMDY ™</label>
             {!isVisible && (
               <label className="text-4xl opacity-50 max-md:hidden">↓</label>
             )}
           </div>
 
-          <div className="flex flex-col justify-start items-start md:w-1/4">
+          <div className="flex flex-col justify-start items-start md:w-1/4 stagger-container">
             <label className="opacity-25">[ DIRECTORY ]</label>
             <Link
               href="/works"
-              className="bg-white text-black px-2 hover:underline hover:pl-8 transition-[padding] duration-200"
+              className="bg-white text-black px-2 transition-all duration-200 hover:underline hover:pl-8 btn-transition-wb"
             >
-              {">"}WORKS
+              {">WORKS"}
             </Link>
-            <div className="text-xs">
+            <div className="text-xs stagger-container">
               <Projects />
             </div>
             <ExternalLink text="ITCH" href="https://smnmhmdy.itch.io" />
@@ -99,7 +123,7 @@ export const BigHero = () => {
             <ExternalLink text="SAMANDEV" href="https://samandev.itch.io" />
           </div>
 
-          <div className="-my-4 inline-flex justify-center items-end md:w-1/4">
+          <div className="-my-4 inline-flex justify-center items-end md:w-1/4 stagger-container">
             <img
               data-hover
               className="w-40 max-md:w-20"
@@ -108,7 +132,7 @@ export const BigHero = () => {
             />
           </div>
 
-          <div className="flex flex-col justify-end items-end max-md:items-end md:w-1/4">
+          <div className="flex flex-col justify-end items-end max-md:items-end md:w-1/4 stagger-container">
             <label>WEB DEVELOPER</label>
             <label>GAME DEVELOPER</label>
             <label>PRODUCER</label>
@@ -145,6 +169,9 @@ const ExternalLink = ({ text, href }: { text: string; href: string }) => {
 
 const Projects = () => {
   const MAX_DISPLAYED_PROJECTS = 8;
+
+  const btnClassName = classNames(`flex transition-all duration-200 btn-transition-wb move-past hover:pl-4`)
+
   return (
     <>
       {PROJECTS.slice(0, MAX_DISPLAYED_PROJECTS).map((project) => (
@@ -153,15 +180,15 @@ const Projects = () => {
           href={`works/${project.id}`}
           className="hover:underline"
         >
-          <div className="flex">
+          <div className={btnClassName}>
             <span className="ml-8">{project.title.toUpperCase()}</span>
           </div>
         </Link>
       ))}
       <Link href='works' className="hover:underline">
-          <div className="flex">
-            <span className="ml-12 underlinee">{`VIEW ALL >`}</span>
-          </div>
+        <div className={btnClassName}>
+          <span className="ml-12 underlinee">{`VIEW ALL >`}</span>
+        </div>
       </Link>
     </>
   );

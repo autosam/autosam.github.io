@@ -55,15 +55,9 @@ export const ProjectsContainer = ({
     setActiveType(resolvedType);
   }, [searchParams]);
 
-  /* const types = [ProjectTypes.All];
-  PROJECTS.forEach((p) => {
-    const type = p.type || ProjectTypes.Other;
-    return !types.includes(type) && types.push(type);
-  }); */
-
   const finalDisplayStyle = displayStyleOverride ?? displayStyle;
 
-  const containerClass = classNames({
+  const containerClass = classNames("stagger-container fade-l-r-bounce", {
     // "flex gap-2 flex-wrap items-start": displayStyle === DisplayStyle.Grid,
     projects__container: finalDisplayStyle === DisplayStyle.Grid,
   });
@@ -116,17 +110,15 @@ export const ProjectsContainer = ({
       {finalDisplayStyle !== DisplayStyle.None && (
         <div className="flex gap-4">
           <button
-            className={`hover:underline ${
-              finalDisplayStyle === DisplayStyle.Grid && "bg-black text-white"
-            }`}
+            className={`hover:underline ${finalDisplayStyle === DisplayStyle.Grid && "bg-black text-white"
+              }`}
             onClick={() => setDisplayStyle(DisplayStyle.Grid)}
           >
             GRID
           </button>
           <button
-            className={`hover:underline ${
-              finalDisplayStyle === DisplayStyle.Row && "bg-black text-white"
-            }`}
+            className={`hover:underline ${finalDisplayStyle === DisplayStyle.Row && "bg-black text-white"
+              }`}
             onClick={() => setDisplayStyle(DisplayStyle.Row)}
           >
             ROW
