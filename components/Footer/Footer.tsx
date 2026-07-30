@@ -35,7 +35,7 @@ export const Footer = () => {
         />
       </div>
       <br />
-      <Scramble text="© 2025" />
+      <Scramble text="© 2026" />
       <Scramble text="Independently run." />
       <Scramble text="Power to freedom." />
       <br />
