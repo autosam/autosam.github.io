@@ -1,14 +1,11 @@
 import { Scramble } from "@/components/Scramble";
+import { PROJECT_SCREENSHOTS } from "@/constants/projectScreenshots";
 import { PROJECTS } from "@/constants/projects";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
-import { uid } from "uid";
 import remarkGfm from "remark-gfm";
-import { useAtom } from "jotai";
-import { headerVisibilityAtom } from "@/store";
-import { useEffect } from "react";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({
@@ -54,6 +51,8 @@ export default async function Page({
     },
   ];
 
+  const screenshots = PROJECT_SCREENSHOTS[projectDefinition?.id] ?? [];
+
   const displayedInfo = [
     projectDefinition.releaseDate,
     [projectDefinition.genre, projectDefinition.type]
@@ -66,13 +65,17 @@ export default async function Page({
 
   return (
     <>
-      <div className="flex gap-2 flex-wrap gap-y-8 p-4">
-        <div className="gap-2 flex flex-col">
-          <img className="w-80 h-fit" src={projectDefinition.img} />
+      <div className="flex flex-col gap-8 p-4 md:flex-row md:flex-nowrap md:items-start">
+        <div className="flex w-full shrink-0 flex-col gap-2 md:w-80 md:sticky top-16">
+          <img
+            className="h-fit w-full max-w-80"
+            src={projectDefinition.img}
+            alt={projectDefinition.title}
+          />
           {links.map((link) => (
-            <div key={uid()} className="inline-flex">
+            <div key={link.url} className="inline-flex">
               <Link
-                className="bg-black text-white px-2 hover:underline"
+                className="bg-black px-2 text-white hover:underline"
                 href={link.url}
                 target="_blank"
               >
@@ -81,9 +84,9 @@ export default async function Page({
             </div>
           ))}
         </div>
-        <br />
-        <div className="flex flex-col justify-between gap-1 mb-4">
-          <div className="text-sm flex flex-col gap-2">
+
+        <div className="mb-4 min-w-0 flex-1 md:sticky top-16">
+          <div className="flex flex-col gap-2 text-sm">
             <div>
               <strong>
                 <Scramble text={projectDefinition.title?.toUpperCase()} />
@@ -104,6 +107,20 @@ export default async function Page({
             </div>
           </div>
         </div>
+
+        {screenshots.length > 0 && (
+          <div className="flex w-full min-w-0 flex-col gap-2 md:min-w-[12rem] md:flex-1 md:max-w-md lg:max-w-lg">
+            {screenshots.map((src, index) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${projectDefinition.title} screenshot ${index + 1}`}
+                className="block h-auto w-full _border border-black"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

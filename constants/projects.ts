@@ -22,6 +22,10 @@ export const PROJECTS: ProjectProps[] = [
     ],
     genre: ProjectGenres.Simulation,
     id: "tamaweb",
+    links: [
+      { text: "Visit", url: "https://tamawebgame.github.io" },
+      { text: "Play on Itch", url: "https://samandev.itch.io/tamaweb" },
+    ],
     description: `Your Virtual Pet Adventure Awaits!
       Raise, Care, and Adventure with Your Virtual Pet! Enter a vibrant world where your digital pet relies on you for everything!
       Whether it’s feeding, cleaning, or playing fun games, every choice you make shapes their life and happiness.
