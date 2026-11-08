@@ -33,7 +33,7 @@ export const MusicPlayer = () => {
         <img
           alt="Album cover"
           className="w-14 rounded mask-cover mask-size-[100%] transition-transform"
-          src="images/album_cover_01.jpg"
+          src="images/album_cover_01.png"
           style={{
             maskSize: '100%',
             maskImage: isHovering ? 'url(images/play_mask.png)' : '',

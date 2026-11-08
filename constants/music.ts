@@ -1,5 +1,5 @@
 export const MUSIC = {
-  artist: "Cosmograph",
-  title: "Jump Up",
-  href: "https://www.youtube.com/watch?v=HqqVjW8V9ms",
+  artist: "elmjack",
+  title: "JUSTICE",
+  href: "https://music.youtube.com/watch?v=g-LHCv-b6xA&si=LQPFOH3zl738Kb3I",
 };

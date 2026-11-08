@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Scramble } from "../Scramble";
 import { useAtom } from "jotai";
 import { headerVisibilityAtom } from "@/store";
@@ -6,6 +7,11 @@ import classNames from "classnames";
 import { PROJECTS } from "@/constants/projects";
 import { MusicPlayer } from "../MusicPlayer";
 import { Age } from "../Age";
+
+const BOTTOM_QUOTES = [
+  'Forever Persian Gulf',
+  'The devil does not need to convince you evil is good.\n It only needs you to stop asking.',
+]
 
 export const BigHero = () => {
   const [isVisible] = useAtom(headerVisibilityAtom);
@@ -27,7 +33,7 @@ export const BigHero = () => {
 
       <div className="absolute flex flex-col select-none pointer-events-none right-0 p-4 max-md:hidden">
         {new Array(30).fill(0).map((_, i) => (
-          <div>
+          <div key={i}>
             <label style={{ opacity: Math.abs(i - 30) * 0.005 }}>
               SMN MHMDY • SMN MHMDY • SMN MHMDY
             </label>
@@ -116,14 +122,26 @@ export const BigHero = () => {
             <label>
               <Age />
             </label>
-            <label>
-              <i className="opacity-25 text-xs">FOREVER PERSIAN GULF</i>
+            <label className="text-right">
+              <BottomQuote />
             </label>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+const BottomQuote = () => {
+  const [quote, setQuote] = useState(BOTTOM_QUOTES[0]);
+
+  useEffect(() => {
+    setQuote(
+      BOTTOM_QUOTES[Math.floor(Math.random() * BOTTOM_QUOTES.length)]
+    );
+  }, []);
+
+  return <i className="opacity-25 whitespace-pre-wrap text-xs inline-flex text-right">{quote.toUpperCase()}</i>;
 };
 
 const ExternalLink = ({ text, href }: { text: string; href: string }) => {
