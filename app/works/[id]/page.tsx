@@ -109,7 +109,7 @@ export default async function Page({
         </div>
 
         {screenshots.length > 0 && (
-          <div className="flex w-full min-w-0 flex-col gap-2 md:min-w-[12rem] md:flex-1 md:max-w-md lg:max-w-lg">
+          <div className="flex w-full min-w-0 flex-col gap-2 md:min-w-[12rem] md:flex-1 max-w-full">
             {screenshots.map((src, index) => (
               <img
                 key={src}
